@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Saltstack | modules（五） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、modules介绍
+这里简单介绍下modules吧，modules是salt用于远程执行的核心，可以用来安装软件、重启服务、远程运行命令、传输文件等，系统本身自带了蛮多的 modules，当然你也可以自定义modules">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Saltstack | modules（五）">
+<meta property="og:url" content="http://yoursite.com/2013/10/21/saltstack-modules/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、modules介绍
+这里简单介绍下modules吧，modules是salt用于远程执行的核心，可以用来安装软件、重启服务、远程运行命令、传输文件等，系统本身自带了蛮多的 modules，当然你也可以自定义modules">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Saltstack | modules（五）">
+<meta name="twitter:description" content="一、modules介绍
+这里简单介绍下modules吧，modules是salt用于远程执行的核心，可以用来安装软件、重启服务、远程运行命令、传输文件等，系统本身自带了蛮多的 modules，当然你也可以自定义modules">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-saltstack-modules" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/10/21/saltstack-modules/" class="article-date">
+  <time datetime="2013-10-21T09:33:00.000Z" itemprop="datePublished">Oct 21 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Saltstack | modules（五）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、modules介绍">一、modules介绍</h3>
+<p>这里简单介绍下modules吧，modules是salt用于远程执行的核心，可以用来安装软件、重启服务、远程运行命令、传输文件等，系统本身自带了蛮多的 <a href="http://docs.saltstack.com/ref/modules/all/index.html" target="_blank" rel="external">modules</a>，当然你也可以自定义modules</p>
+<a id="more"></a>
+
+<h3 id="二、modules使用">二、modules使用</h3>
+<p>这里选取几个系统自带的modules测试下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># salt 'SquidMonitor-SZ' network.interfaces</div><div class="line">SquidMonitor-SZ:</div><div class="line">    -<span class="ruby">---------</span></div><div class="line">    eth0:</div><div class="line">        -<span class="ruby">---------</span></div><div class="line">    hwaddr:</div><div class="line">        6c:f0:49:26:92:98</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># salt 'SquidMonitor-SZ' disk.usage        </span></div><div class="line">SquidMonitor-SZ:</div><div class="line">    ----------</div><div class="line">    /:</div><div class="line">        ----------</div><div class="line">        1K-blocks:</div><div class="line">            <span class="number">221744836</span></div><div class="line">        available:</div><div class="line">            <span class="number">203275748</span></div><div class="line">        capacity:</div><div class="line">            <span class="number">4</span>%</div><div class="line">        <span class="keyword">...</span></div></pre></td></tr></table></figure>
+
+<h3 id="三、自定义modules">三、自定义modules</h3>
+<p>salt在安装后默认会自带很多modules，当然如果你有特殊需求的话也可以自定义modules</p>
+<p>在master创建_modules目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># mkdir <span class="regexp">/srv/</span>salt<span class="regexp">/_modules && cd /</span>srv<span class="regexp">/salt/</span>_modules</div></pre></td></tr></table></figure>
+
+<p>然后在该目录写个python脚本，这里写的是采集每台squid的日志量</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="comment"># Filename: suse.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> commands</div><div class="line"></div><div class="line">def client_info():</div><div class="line">    <span class="literal">result</span> = {}</div><div class="line">    <span class="literal">result</span>['access.log.<span class="number">0_</span>lines'] = commands.getoutput(<span class="string">"wc -l /data/squid/logs/access.log.0 | awk '{print $1}'"</span>)</div><div class="line">    <span class="literal">result</span>['access.log.<span class="number">1_</span>lines'] = commands.getoutput(<span class="string">"wc -l /data/squid/logs/access.log.1 | awk '{print $1}'"</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">result</span></div></pre></td></tr></table></figure>
+
+<p>同步刷新自定义modules到minions</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="array"># salt </span><span class="string">'SquidMonitor-SZ'</span> saltutil.sync_all</div><div class="line"><span class="array"># salt </span><span class="string">'SquidMonitor-SZ'</span> saltutil.refresh_modules</div></pre></td></tr></table></figure>
+
+<p>上述完成后就可以测试了^^</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"># salt <span class="string">'SquidMonitor-SZ'</span> <span class="filename">suse.client_info</span></div><div class="line">SquidMonitor-SZ:</div><div class="line">----------</div><div class="line">    <span class="filename">access.log.0_lines</span>:</div><div class="line">        <span class="number">5223883</span></div><div class="line">    <span class="filename">access.log.1_lines</span>:</div><div class="line">        <span class="number">1652243</span></div><div class="line">    <span class="filename">collector.0_cursor</span>:</div><div class="line">        <span class="number">5223883</span></div><div class="line">    <span class="filename">collector.1_cursor</span>:</div><div class="line">        <span class="number">1751589</span></div></pre></td></tr></table></figure>
+
+<h3 id="四、使用module注意事项">四、使用module注意事项</h3>
+<p>master端定义modules默认是存放在/srv/salt/_modules/，需手动创建该目录，编写完modules之后运行saltutil.sync_all进行同步</p>
+<p>另外有些时候同步完module，会出现无法采集到有些minion的自定义信息，这个时候可以运行saltutil.refresh_modules刷新下modules，当然为了保险起见，同步完都刷新下最好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/10/21/saltstack-modules/" data-id="r96itnjugtpjlfw7" class="article-share-link" data-share="baidu">Share</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/10/22/saltstack-salt-ssh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Saltstack | salt-ssh（六）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/09/24/saltstack-grains/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Saltstack | grains（三）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/10/python-pypi/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/15/python-multiprocessing/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/23/linux-pptp-vpn-logs/">PPTP | linux PPTP VPN记录登陆信息</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/18/awk-note/">AWK | awk笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://themes.xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://bawn.github.io/" target="_blank">iOS开发博客</a>
+          </li>
+        
+          <li>
+            <a href="http://tangyumeng.com/" target="_blank">tangyumeng&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://www.novsec.com/" target="_blank">novsec&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://xfeng.me/" target="_blank">小峰网络遨游记</a>
+          </li>
+        
+          <li>
+            <a href="http://silenceage.com/" target="_blank">沉默紀</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

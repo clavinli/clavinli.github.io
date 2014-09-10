@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Command | seq | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、seq是什么？
+seq命令的作用就是打印出一串有序的数字，seq(sequence of number)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Command | seq">
+<meta property="og:url" content="http://yoursite.com/2013/11/06/linux-command-seq/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、seq是什么？
+seq命令的作用就是打印出一串有序的数字，seq(sequence of number)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Command | seq">
+<meta name="twitter:description" content="一、seq是什么？
+seq命令的作用就是打印出一串有序的数字，seq(sequence of number)">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux-command-seq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/06/linux-command-seq/" class="article-date">
+  <time datetime="2013-11-06T01:36:15.000Z" itemprop="datePublished">Nov 6 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Command | seq
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、seq是什么？">一、seq是什么？</h3>
+<p>seq命令的作用就是打印出一串有序的数字，seq(sequence of number)<br><a id="more"></a></p>
+<h3 id="二、seq使用">二、seq使用</h3>
+<p><strong>例一：打印出整数1至3</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># seq 1 3</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+
+<p><strong>例二：使用参数打印出整数1至3</strong><br>1、使用-f参数指定格式 ，默认是<code>&quot;%g&quot;</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="array"># seq </span>-f<span class="string">"%3g"</span> <span class="number">1</span> <span class="number">3</span></div><div class="line">  <span class="number">1</span></div><div class="line">  <span class="number">2</span></div><div class="line">  <span class="number">3</span></div><div class="line"></div><div class="line"><span class="array"># seq </span>-f<span class="string">"%03g"</span> <span class="number">1</span> <span class="number">3</span></div><div class="line"><span class="number">001</span></div><div class="line"><span class="number">002</span></div><div class="line"><span class="number">003</span></div><div class="line"></div><div class="line"><span class="array"># seq </span>-f<span class="string">"str%03g"</span> <span class="number">1</span> <span class="number">3</span></div><div class="line">str001</div><div class="line">str002</div><div class="line">str003</div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong><br><code>&quot;%&quot;</code>后面指定数字的位数，<code>&quot;%3g&quot;</code>数字位数不足部分补充空格，<code>&quot;%03g&quot;</code>数字位数不足部分补充0<br><code>&quot;%&quot;</code>前面指定字符串，如上述例子的<code>&quot;str%03g&quot;</code>，注意不能单独指定字符串，要跟数字格式并用</p>
+<p>2、使用-w参数指定输出数字同宽，不能和-f参数一起使用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># seq -w 9 10</span></div><div class="line"><span class="number">09</span></div><div class="line"><span class="number">10</span></div></pre></td></tr></table></figure>
+
+<p>3、使用-s参数指定分隔符，默认是回车</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># seq -s<span class="title">""</span> 1 3</span></div><div class="line"><span class="number">123</span></div><div class="line"></div><div class="line"><span class="preprocessor"># seq -s<span class="title">" "</span> 1 3</span></div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div><div class="line"></div><div class="line"><span class="preprocessor"># seq -s<span class="title">"#"</span> 1 3</span></div><div class="line"><span class="number">1</span><span class="preprocessor">#2#3</span></div><div class="line"></div><div class="line"><span class="preprocessor"># seq -s<span class="title">" "</span> -f<span class="title">"str%03g"</span> 1 3</span></div><div class="line">str001 str002 str003</div><div class="line"></div><div class="line"><span class="preprocessor"># seq -s<span class="title">" "</span> -w 9 10</span></div><div class="line"><span class="number">09</span> <span class="number">10</span></div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong><br>-s参数可以跟-f参数一起使用</p>
+<p><strong>例三：高级应用</strong><br>1、创建10个名为dir001、dir002、dir003的目录</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># seq -<span class="keyword">f</span> <span class="string">"dir%03g"</span> <span class="number">1</span> <span class="number">5</span> | xargs <span class="built_in">mkdir</span>;<span class="keyword">ls</span></div><div class="line">dir001  dir002  dir003  dir004  dir005</div><div class="line"></div><div class="line"># <span class="built_in">mkdir</span> $(seq -<span class="keyword">f</span><span class="string">"dir%03g"</span> <span class="number">1</span> <span class="number">10</span>);<span class="keyword">ls</span></div><div class="line">dir001  dir002  dir003  dir004  dir005</div></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/11/06/linux-command-seq/" data-id="2oma4johojekc1t8" class="article-share-link" data-share="baidu">Share</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/11/12/lsyncd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Lsyncd | 使用lsyncd同步文件目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/10/22/saltstack-salt-ssh/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Saltstack | salt-ssh（六）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/10/python-pypi/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/15/python-multiprocessing/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/23/linux-pptp-vpn-logs/">PPTP | linux PPTP VPN记录登陆信息</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/18/awk-note/">AWK | awk笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://themes.xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://bawn.github.io/" target="_blank">iOS开发博客</a>
+          </li>
+        
+          <li>
+            <a href="http://tangyumeng.com/" target="_blank">tangyumeng&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://www.novsec.com/" target="_blank">novsec&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://xfeng.me/" target="_blank">小峰网络遨游记</a>
+          </li>
+        
+          <li>
+            <a href="http://silenceage.com/" target="_blank">沉默紀</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

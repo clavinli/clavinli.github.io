@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python | Beautiful Soup模块 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、简介
+Beautiful Soup是一个用来解析HTML和XML的python库，很适合用于爬取网页，提供了很人性化的parse tree，比起传统的SGMLParser给力多了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python | Beautiful Soup模块">
+<meta property="og:url" content="http://yoursite.com/2013/09/06/python-bs4/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、简介
+Beautiful Soup是一个用来解析HTML和XML的python库，很适合用于爬取网页，提供了很人性化的parse tree，比起传统的SGMLParser给力多了">
+<meta property="og:image" content="https://lh5.googleusercontent.com/-BFHTV0zsy_Q/U3sd-NUdZxI/AAAAAAAAAI4/2GFkkO_WZDc/s1083/python-bs4-1.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python | Beautiful Soup模块">
+<meta name="twitter:description" content="一、简介
+Beautiful Soup是一个用来解析HTML和XML的python库，很适合用于爬取网页，提供了很人性化的parse tree，比起传统的SGMLParser给力多了">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-bs4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/09/06/python-bs4/" class="article-date">
+  <time datetime="2013-09-06T14:17:00.000Z" itemprop="datePublished">Sep 6 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python | Beautiful Soup模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、简介">一、简介</h3>
+<p>Beautiful Soup是一个用来解析HTML和XML的python库，很适合用于爬取网页，提供了很人性化的parse tree，比起传统的SGMLParser给力多了</p>
+<a id="more"></a>
+
+<h3 id="二、安装">二、安装</h3>
+<p><strong>安装Beautiful Soup</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip <span class="operator"><span class="keyword">install</span> beautifulsoup4</span></div></pre></td></tr></table></figure>
+
+<h3 id="三、例子">三、例子</h3>
+<p>这里使用下列html源码来让Beautiful Soup解析</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>The Dormouse's story<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>The Dormouse's story<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"story"</span>&gt;</span>Once upon a time there were three little sisters</div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://example.com/elsie"</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">id</span>=<span class="value">"link1"</span>&gt;</span>Elsie<span class="tag">&lt;/<span class="title">a</span>&gt;</span>,</div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://example.com/lacie"</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">id</span>=<span class="value">"link2"</span>&gt;</span>Lacie<span class="tag">&lt;/<span class="title">a</span>&gt;</span> and</div><div class="line">    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://example.com/tillie"</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">id</span>=<span class="value">"link3"</span>&gt;</span>Tillie<span class="tag">&lt;/<span class="title">a</span>&gt;</span>;</div><div class="line">    and they lived at the bottom of a well.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"story"</span>&gt;</span>...<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>格式化源码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line">soup = BeautifulSoup(html_doc)</div><div class="line"><span class="keyword">print</span> (soup.prettify())</div><div class="line"><span class="comment"># &lt;html&gt;</span></div><div class="line"><span class="comment">#  &lt;head&gt;</span></div><div class="line"><span class="comment">#   &lt;title&gt;</span></div><div class="line"><span class="comment">#    The Dormouse's story</span></div><div class="line"><span class="comment">#   &lt;/title&gt;</span></div><div class="line"><span class="comment">#  &lt;/head&gt;</span></div><div class="line"><span class="comment">#  &lt;body&gt;</span></div><div class="line"><span class="comment">#   &lt;p class="title"&gt;</span></div><div class="line"><span class="comment">#    &lt;b&gt;</span></div><div class="line"><span class="comment">#     The Dormouse's story</span></div><div class="line"><span class="comment">#    &lt;/b&gt;</span></div><div class="line"><span class="comment">#   &lt;/p&gt;</span></div><div class="line"><span class="comment">#   &lt;p class="story"&gt;</span></div><div class="line"><span class="comment">#    Once upon a time there were three little sisters; and their names were</span></div><div class="line"><span class="comment">#    &lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;</span></div><div class="line"><span class="comment">#     Elsie</span></div><div class="line"><span class="comment">#    &lt;/a&gt;</span></div><div class="line"><span class="comment">#    ,</span></div><div class="line"><span class="comment">#    &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;</span></div><div class="line"><span class="comment">#     Lacie</span></div><div class="line"><span class="comment">#    &lt;/a&gt;</span></div><div class="line"><span class="comment">#    and</span></div><div class="line"><span class="comment">#    &lt;a class="sister" href="http://example.com/tillie" id="link2"&gt;</span></div><div class="line"><span class="comment">#     Tillie</span></div><div class="line"><span class="comment">#    &lt;/a&gt;</span></div><div class="line"><span class="comment">#    ; and they lived at the bottom of a well.</span></div><div class="line"><span class="comment">#   &lt;/p&gt;</span></div><div class="line"><span class="comment">#   &lt;p class="story"&gt;</span></div><div class="line"><span class="comment">#    ...</span></div><div class="line"><span class="comment">#   &lt;/p&gt;</span></div><div class="line"><span class="comment">#  &lt;/body&gt;</span></div><div class="line"><span class="comment"># &lt;/html&gt;</span></div></pre></td></tr></table></figure>
+
+<p>测试下自带的一些数据结构</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">soup.title</div><div class="line"># <span class="tag">&lt;<span class="title">title</span>&gt;</span>The Dormouse's story<span class="tag">&lt;/<span class="title">title</span>&gt;</span></div><div class="line"></div><div class="line">soup.title.name</div><div class="line"># u'title'</div><div class="line"></div><div class="line">soup.title.string</div><div class="line"># u'The Dormouse's story'</div><div class="line"></div><div class="line">soup.title.parent.name</div><div class="line"># u'head'</div><div class="line"></div><div class="line">soup.p</div><div class="line"># <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span><span class="tag">&lt;<span class="title">b</span>&gt;</span>The Dormouse's story<span class="tag">&lt;/<span class="title">b</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></div><div class="line"></div><div class="line">soup.p['class']</div><div class="line"># u'title'</div><div class="line"></div><div class="line">soup.a</div><div class="line"># <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">href</span>=<span class="value">"http://example.com/elsie"</span> <span class="attribute">id</span>=<span class="value">"link1"</span>&gt;</span>Elsie<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div><div class="line"></div><div class="line">soup.find_all('a')</div><div class="line"># [<span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">href</span>=<span class="value">"http://example.com/elsie"</span> <span class="attribute">id</span>=<span class="value">"link1"</span>&gt;</span>Elsie<span class="tag">&lt;/<span class="title">a</span>&gt;</span>,</div><div class="line">#  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">href</span>=<span class="value">"http://example.com/lacie"</span> <span class="attribute">id</span>=<span class="value">"link2"</span>&gt;</span>Lacie<span class="tag">&lt;/<span class="title">a</span>&gt;</span>,</div><div class="line">#  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">href</span>=<span class="value">"http://example.com/tillie"</span> <span class="attribute">id</span>=<span class="value">"link3"</span>&gt;</span>Tillie<span class="tag">&lt;/<span class="title">a</span>&gt;</span>]</div><div class="line"></div><div class="line">soup.find(id="link3")</div><div class="line"># <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"sister"</span> <span class="attribute">href</span>=<span class="value">"http://example.com/tillie"</span> <span class="attribute">id</span>=<span class="value">"link3"</span>&gt;</span>Tillie<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>找出所有超链接出来</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">for <span class="keyword">link</span> <span class="keyword">in</span> soup<span class="built_in">.</span>find_all(<span class="string">'a'</span>):</div><div class="line">    print (<span class="keyword">link</span><span class="built_in">.</span>get(<span class="string">'href'</span>))</div><div class="line"><span class="variable">#http</span>:<span class="comment">//example.com/elsie</span></div><div class="line"><span class="variable">#http</span>:<span class="comment">//example.com/lacie</span></div><div class="line"><span class="variable">#http</span>:<span class="comment">//example.com/tillie</span></div></pre></td></tr></table></figure>
+
+<p>分离出所有的文本内容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">print (soup.get_text())</div><div class="line"><span class="preprocessor">#The Dormouse's story</span></div><div class="line"><span class="preprocessor">#Once upon a time there were three little sisters</span></div><div class="line"><span class="preprocessor">#Elsie,</span></div><div class="line"><span class="preprocessor">#Lacie and</span></div><div class="line"><span class="preprocessor">#Tillie;</span></div><div class="line"><span class="preprocessor">#and they lived at the bottom of a well.</span></div><div class="line"><span class="preprocessor">#...</span></div></pre></td></tr></table></figure>
+
+<h3 id="四、实战">四、实战</h3>
+<p>任务就是提取每部电影的标题跟种子的链接<br><img src="https://lh5.googleusercontent.com/-BFHTV0zsy_Q/U3sd-NUdZxI/AAAAAAAAAI4/2GFkkO_WZDc/s1083/python-bs4-1.png" alt="python-bs4-1.png"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"><span class="comment"># Filename: spider_btscg.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line">host = <span class="string">"http://www.btscg.com"</span></div><div class="line">pat_torrent = re.compile(<span class="string">r'(/uploads/.*?\.torrent)'</span>)</div><div class="line">pat_track = re.compile(<span class="string">r'(tracker.*?\.html)'</span>)</div><div class="line"></div><div class="line">html_source = urllib2.urlopen(host).read().decode(<span class="string">'gbk'</span>, <span class="string">'ignore'</span>).encode(<span class="string">'utf-8'</span>, <span class="string">'ignore'</span>)</div><div class="line">soup = BeautifulSoup(html_source)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_torrent_url</span><span class="params">(link)</span>:</span></div><div class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> link.find_all(<span class="string">'a'</span>):</div><div class="line">        <span class="keyword">if</span> pat_track.search(str(url[<span class="string">'href'</span>])):</div><div class="line">            <span class="keyword">print</span> <span class="string">"---------------------------------------------------------"</span></div><div class="line">            <span class="keyword">print</span> url.string</div><div class="line">        <span class="keyword">if</span> pat_torrent.search(str(url[<span class="string">'href'</span>])):</div><div class="line">            <span class="keyword">print</span> <span class="string">"\033[36m %s \033[0m"</span> % (host + url[<span class="string">'href'</span>])</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    link = soup.find(<span class="string">'div'</span>, {<span class="string">"id"</span>:<span class="string">"portal_block_8_content"</span>})</div><div class="line">    find_torrent_url(link)</div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong><br>原理很简单，使用urllib2打开需要解析的网页（注意编码问题），然后使用BeautifulSoup格式化HTML源码，先查找电影栏目的div id，然后再找里面的所有超链接，最后使用re模块匹配torrent种子链接</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/09/06/python-bs4/" data-id="u6z9wdop3d72dmam" class="article-share-link" data-share="baidu">Share</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/09/09/nodejs-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nodejs | 使用Hexo在Github上搭建博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/09/06/saltstack-pillar/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Saltstack | pillar（四）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/10/python-pypi/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/15/python-multiprocessing/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/23/linux-pptp-vpn-logs/">PPTP | linux PPTP VPN记录登陆信息</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/18/awk-note/">AWK | awk笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://themes.xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://bawn.github.io/" target="_blank">iOS开发博客</a>
+          </li>
+        
+          <li>
+            <a href="http://tangyumeng.com/" target="_blank">tangyumeng&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://www.novsec.com/" target="_blank">novsec&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://xfeng.me/" target="_blank">小峰网络遨游记</a>
+          </li>
+        
+          <li>
+            <a href="http://silenceage.com/" target="_blank">沉默紀</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

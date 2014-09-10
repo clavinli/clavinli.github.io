@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Lsyncd | 使用lsyncd同步文件目录 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、lsyncd是什么？
+前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lsyncd | 使用lsyncd同步文件目录">
+<meta property="og:url" content="http://yoursite.com/2013/11/12/lsyncd/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、lsyncd是什么？
+前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lsyncd | 使用lsyncd同步文件目录">
+<meta name="twitter:description" content="一、lsyncd是什么？
+前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lsyncd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/11/12/lsyncd/" class="article-date">
+  <time datetime="2013-11-12T05:20:15.000Z" itemprop="datePublished">Nov 12 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lsyncd | 使用lsyncd同步文件目录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、lsyncd是什么？">一、lsyncd是什么？</h3>
+<p>前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，立刻通知远程服务器，并通过rsync 或rsync+ssh方式实现文件同步。<br><a id="more"></a></p>
+<h3 id="二、lsyncd安装">二、lsyncd安装</h3>
+<p>CentOS官方源没有包含lsyncd，需要去安装epel源才有</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># yum install lsyncd</span></div></pre></td></tr></table></figure>
+
+<h3 id="三、lsyncd使用">三、lsyncd使用</h3>
+<p>lsyncd安装完后默认并没有提供配置文件，不过我们可以去/usr/share/doc/lsyncd/examples找相关例子</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cd /usr/share/doc/lsyncd-*/examples;ls</span></div><div class="line">lbash.lua  lecho.lua  lgforce.lua  lpostcmd.lua  lrsync.lua  lrsyncssh.lua</div><div class="line"><span class="comment"># vim lrsyncssh.lua</span></div><div class="line">-- Simple example for default rsync.</div><div class="line"><span class="variable">settings =</span> { </div><div class="line">    <span class="variable">statusFile =</span> <span class="string">"/tmp/lsyncd.stat"</span>,</div><div class="line">    <span class="variable">statusInterval =</span> <span class="number">1</span>,</div><div class="line">}</div><div class="line"></div><div class="line">sync{</div><div class="line">    default.rsync,</div><div class="line">    <span class="variable">source=</span><span class="string">"src"</span>,</div><div class="line">    <span class="variable">target=</span><span class="string">"trg"</span>,</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong><br>lsyncd的配置文件使用的是lua风格的。更多详情请访问 <a href="http://www.lua.org" target="_blank" rel="external">Lua</a></p>
+<p>了解完之后我们就来实验一番先。首先先配置lsyncd，格式很简单，注意source、host、targetdir部分即可</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># vim /etc/lsyncd.conf</span></div><div class="line">settings {</div><div class="line">    <span class="variable">logfile =</span> <span class="string">"/var/log/lsyncd/lsyncd.log"</span>,</div><div class="line">    <span class="variable">statusFile =</span> <span class="string">"/var/log/lsyncd/lsyncd.status"</span></div><div class="line">}</div><div class="line"></div><div class="line">sync {</div><div class="line">    default.rsyncssh,</div><div class="line">    <span class="variable">source =</span> <span class="string">"/root/clavinli"</span>,</div><div class="line">    <span class="variable">host =</span> <span class="string">"10.2.68.38"</span>,</div><div class="line">    <span class="variable">targetdir =</span> <span class="string">"/tmp/clavinli"</span>,</div><div class="line">    <span class="variable">ssh =</span> {</div><div class="line">        <span class="variable">port =</span> <span class="number">36000</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>因为这里使用rsyncssh进行同步，所以还需要配置root账号无密码ssh登录，然后在远程机器上创建目录/tmp/clavinli</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># ssh-keygen -t rsa</span></div><div class="line"><span class="preprocessor"># ssh-copy-id root@10.2.68.38</span></div><div class="line"><span class="preprocessor"># ssh -p36000 root@10.2.68.38</span></div><div class="line"><span class="preprocessor"># mkdir /tmp/clavinli</span></div></pre></td></tr></table></figure>
+
+<p>配置好之后在本地机器上启动lsyncd服务，这时本地机器的/root/clavinli目录就会同步到10.2.68.38的/tmp/clavinli目录了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="input"><span class="prompt"># tail -f /var/log/lsyncd/lsyncd.log</span></span></div><div class="line">Tue Nov 12 14:09:27 2013 Normal: --- TERM signal, fading ---</div><div class="line">Tue Nov 12 14:09:28 2013 Normal: recursive startup rsync: /root/clavinli/ -&gt; <span class="number">10.2</span>.<span class="number">68.38</span><span class="symbol">:/tmp/clavinli/</span></div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong><br>lsyncd使用rsyncssh同步的时候是调用ssh的22端口，但因为我这边使用了非常规的ssh端口，因此这里需要额外添加个ssh的选项</p>
+<h3 id="四、lsyncd优化">四、lsyncd优化</h3>
+<p>在使用lsyncd的时候做了个测试，创建大量的文件(超过10000)会提示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># tail -f /var/log/lsyncd/lsyncd.log</span></div><div class="line"><span class="type">Tue</span> <span class="type">Nov</span> <span class="number">12</span> <span class="number">14</span>:<span class="number">56</span>:<span class="number">23</span> <span class="number">2013</span> <span class="type">Error</span>: <span class="type">Terminating</span> since <span class="keyword">out</span> <span class="keyword">of</span> inotify watches.</div><div class="line"><span class="type">Consider</span> increasing /<span class="keyword">proc</span>/sys/fs/inotify/max_user_watches</div></pre></td></tr></table></figure>
+
+<p>刚开始就提到说lsyncd使用了inotify触发机制，但是监控的文件数是有限的（默认是8192）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># vim /etc/sysctl.conf</span></div><div class="line"><span class="preprocessor"># Controls the maximum inotify watches per user</span></div><div class="line">fs.inotify.max_user_watches = <span class="number">1048576</span></div><div class="line"><span class="preprocessor"># sysctl -p</span></div></pre></td></tr></table></figure>
+
+<p>现在他就没有这个限制了^^</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/11/12/lsyncd/" data-id="p875bfx50optost0" class="article-share-link" data-share="baidu">Share</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/11/13/saltstack-runners/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Saltstack | runners（七）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/11/06/linux-command-seq/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Command | seq</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/10/python-pypi/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/15/python-multiprocessing/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/23/linux-pptp-vpn-logs/">PPTP | linux PPTP VPN记录登陆信息</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/18/awk-note/">AWK | awk笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://themes.xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://bawn.github.io/" target="_blank">iOS开发博客</a>
+          </li>
+        
+          <li>
+            <a href="http://tangyumeng.com/" target="_blank">tangyumeng&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://www.novsec.com/" target="_blank">novsec&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://xfeng.me/" target="_blank">小峰网络遨游记</a>
+          </li>
+        
+          <li>
+            <a href="http://silenceage.com/" target="_blank">沉默紀</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

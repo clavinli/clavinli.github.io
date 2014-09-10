@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Nodejs | 使用Hexo在Github上搭建博客 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、简介
+Hexo 是一个基于 Node.js 的博客框架，采用 Markdown 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs | 使用Hexo在Github上搭建博客">
+<meta property="og:url" content="http://yoursite.com/2013/09/09/nodejs-hexo/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、简介
+Hexo 是一个基于 Node.js 的博客框架，采用 Markdown 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^">
+<meta property="og:image" content="https://lh3.googleusercontent.com/-aR8U7aTfm7E/U3sc7rWZUKI/AAAAAAAAAIs/xb9l8Q31Ty8/s1033/nodejs-hexo-1.png">
+<meta property="og:image" content="https://lh3.googleusercontent.com/-bmryIDG5jSM/U3sc7jlJaSI/AAAAAAAAAIo/SxoLtWA1kV8/s376/nodejs-hexo-2.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs | 使用Hexo在Github上搭建博客">
+<meta name="twitter:description" content="一、简介
+Hexo 是一个基于 Node.js 的博客框架，采用 Markdown 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-nodejs-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/09/09/nodejs-hexo/" class="article-date">
+  <time datetime="2013-09-09T06:57:00.000Z" itemprop="datePublished">Sep 9 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nodejs | 使用Hexo在Github上搭建博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、简介">一、简介</h3>
+<p><a href="http://zespia.tw/hexo/" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a> 的博客框架，采用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="external">Markdown</a> 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^</p>
+<a id="more"></a>
+
+<h3 id="二、安装">二、安装</h3>
+<p>安装Hexo还是挺简单的，但是前提还是有以下这些环境才行<br><a href="http://git-scm.com/" target="_blank" rel="external">Git</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-<span class="keyword">get</span> install git-core</div><div class="line"><span class="preprocessor"># yum install git-core</span></div></pre></td></tr></table></figure>
+
+<p><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># curl http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div><div class="line"># nvm install <span class="number">0.10</span></div></pre></td></tr></table></figure>
+
+<p><a href="http://zespia.tw/hexo/" target="_blank" rel="external">Hexo</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># npm install -g hexo</span></div></pre></td></tr></table></figure>
+
+<h3 id="三、使用">三、使用</h3>
+<p>初始化hexo到blog</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hexo init blog</span></div><div class="line">[info] Creating file: <span class="keyword">source</span>/_posts/hello-world.md</div><div class="line">[info] Creating file: package.json</div><div class="line">[info] Creating file: .gitignore</div><div class="line"><span class="keyword">...</span></div></pre></td></tr></table></figure>
+
+<p>新建文章</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># hexo <span class="keyword">new</span> <span class="string">"Hello World"</span></div><div class="line">[info] <span class="keyword">File</span> created at <span class="regexp">/root/</span>clavinli<span class="regexp">/blog/</span><span class="keyword">source</span><span class="regexp">/_posts/</span>hello-world.md</div></pre></td></tr></table></figure>
+
+<p>生成文章</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hexo generate</span></div><div class="line">[info] Files loaded <span class="keyword">in</span> <span class="number">0.</span>547s</div><div class="line">[create] Public: archives/index.html</div><div class="line">[create] Public: archives/<span class="number">2013</span>/index.html</div><div class="line"><span class="keyword">...</span></div></pre></td></tr></table></figure>
+
+<p>使用自带的server预览</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># hexo server</span></div></pre></td></tr></table></figure>
+
+<p>发布到github</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># hexo deploy</span></div><div class="line">[info] Start deploying: github</div><div class="line">[info] Clearing .deploy folder...</div><div class="line">[info] Copying files from public folder...</div><div class="line"><span class="keyword">...</span></div></pre></td></tr></table></figure>
+
+<h3 id="四、部署到Github">四、部署到Github</h3>
+<p>首先需要去 <a href="https://github.com/signup/free" target="_blank" rel="external">Github</a> 注册个账号，过程不表<br><img src="https://lh3.googleusercontent.com/-aR8U7aTfm7E/U3sc7rWZUKI/AAAAAAAAAIs/xb9l8Q31Ty8/s1033/nodejs-hexo-1.png" alt="nodejs-hexo-1.png"></p>
+<p>创建repository<br>在自己的Github主页右下角，创建一个新的repository。比如我的Github账号是clavinli，那么我创建的repository名字应该是clavinli.github.io<br><img src="https://lh3.googleusercontent.com/-bmryIDG5jSM/U3sc7jlJaSI/AAAAAAAAAIo/SxoLtWA1kV8/s376/nodejs-hexo-2.png" alt="nodejs-hexo-2.png"></p>
+<p>部署<br>编辑_config.yml，把下面的clavinli换成你自己的账号名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="class"><span class="keyword">type</span>: <span class="title">github</span></span></div><div class="line">    repository: https:<span class="comment">//github.com/clavinli/clavinli.github.io.git</span></div><div class="line">      branch: master</div></pre></td></tr></table></figure>
+
+<p>执行下列命令即可完成部署</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># hexo generate</span></div><div class="line"><span class="preprocessor"># hexo deploy</span></div></pre></td></tr></table></figure>
+
+<p><strong>备注</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">每次修改完文件后，需要先hexo <span class="keyword">generate</span>下再hexo deploy才能上传到Github</div></pre></td></tr></table></figure>
+
+<p><strong>OK，到此为止，一个基于Github Page的个人博客就搭建完成了。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/09/09/nodejs-hexo/" data-id="qnhtoafy6foz0drr" class="article-share-link" data-share="baidu">Share</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/09/24/saltstack-grains/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Saltstack | grains（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/09/06/python-bs4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python | Beautiful Soup模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/10/python-pypi/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/15/python-multiprocessing/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/23/linux-pptp-vpn-logs/">PPTP | linux PPTP VPN记录登陆信息</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/18/awk-note/">AWK | awk笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Links</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://themes.xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://bawn.github.io/" target="_blank">iOS开发博客</a>
+          </li>
+        
+          <li>
+            <a href="http://tangyumeng.com/" target="_blank">tangyumeng&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://www.novsec.com/" target="_blank">novsec&#39;s blog</a>
+          </li>
+        
+          <li>
+            <a href="http://xfeng.me/" target="_blank">小峰网络遨游记</a>
+          </li>
+        
+          <li>
+            <a href="http://silenceage.com/" target="_blank">沉默紀</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 John Doe<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
