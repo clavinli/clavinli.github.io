@@ -3,26 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Command | scp | Hexo</title>
+  <title>Archives: 2013/9 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Command | scp">
-<meta property="og:url" content="http://yoursite.com/2013/07/31/linux-command-scp/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/archives/2013/09/page/2/">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Command | scp">
-<meta name="twitter:description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -76,10 +67,12 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-linux-command-scp" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-saltstack-install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2013/07/31/linux-command-scp/" class="article-date">
-  <time datetime="2013-07-31T12:00:15.000Z" itemprop="datePublished">7月 31 2013</time>
+    <a href="/2013/09/05/saltstack-install/" class="article-date">
+  <time datetime="2013-09-05T07:22:15.000Z" itemprop="datePublished">9月 5 2013</time>
 </a>
     
   </div>
@@ -89,8 +82,8 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Command | scp
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/05/saltstack-install/">Saltstack | Saltstack安装（一）</a>
     </h1>
   
 
@@ -98,33 +91,22 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、scp_是什么？">一、scp 是什么？</h3>
-<p>scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。</p>
-<h3 id="二、scp_有什么用？">二、scp 有什么用？</h3>
-<p>1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过 scp 命令便可轻松的达到目的。</p>
-<p>2、我们需要将本机上的文件上传到远程服务器上，远程服务器没有开启 ftp 服务器或共享，无法通过常规途径上传是，只需要通过 scp 命令便可以轻松的达到目的。<br><a id="more"></a></p>
-<h3 id="三、scp使用方法">三、scp使用方法</h3>
-<p><strong>1、获取远程服务器上的文件</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/root/squid</span>.conf /root/squid.conf</div></pre></td></tr></table></figure>
+        <h3 id="一、Saltstack介绍">一、Saltstack介绍</h3>
+<p>Salt是一个新的基础平台管理工具。只需花费数分钟即可运行起来, 扩展性足以支撑管理上万台服务器，数秒钟即可完成数据传递. 经常被描述为 Func加强版+Puppet精简版</p>
+<p>Puppet和Fabric两个的工作其实可以由一个工具SaltStack（或AnsibleWorks）完成，减少一个工具的使用会减轻一点负担（学习工具的人力成本、安装和配置工具的时间成本等等）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">操作系统和软件的安装、配置、初始化等</div><div class="line">(Puppet, Chef, CFEngine, AnsibleWorks, SaltStack)</div><div class="line"></div><div class="line">自动执行任务，比如定期备份、清除日志等</div><div class="line">(Fabric, AnsibleWorks, SaltStack)</div><div class="line"></div><div class="line">手动执行任务，比如部署应用、升级、重启、检查和校验文件系统、增加用户等</div><div class="line">(Fabric, Rake, Func, Rundeck, AnsibleWorks, SaltStack)</div></pre></td></tr></table></figure>
 
-<p><code>-P</code> 指定 ssh 端口，不指定默认端口为22</p>
-<p><strong>2、获取远程服务器上的目录</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> -r root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/etc/squid</span> /etc/squid</div></pre></td></tr></table></figure>
 
-<p><code>-r</code> 表示递归复制（即复制该目录下面的文件和目录），其它与上述一致</p>
-<p><strong>3、将本地文件上传到服务器上</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> /root/squid.conf root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/root</span></div></pre></td></tr></table></figure>
-
-<p><strong>4、将本地目录上传到服务器上</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> -r /etc/squid root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/etc/squid</span></div></pre></td></tr></table></figure>
-
-<p><strong>5、几个有用的参数</strong><br>-v 用来显示进度，可以用来查看连接、认证或错误配置信息<br>-C 压缩选项<br>-4 强行使用 IPV4 地址<br>-6 强行使用 IPV6 地址</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2013/09/05/saltstack-install/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/2013/07/31/linux-command-scp/" data-id="lvcs4j4yl201pjp7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://yoursite.com/2013/09/05/saltstack-install/" data-id="otke1yattwjqzqc9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -133,29 +115,63 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2013/08/09/linux-shell-bin-build/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Shell | linux bin安装文件制作
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/07/31/saltstack-vim-syntax-highlighting/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vim | Saltstack文件高亮插件</div>
-    </a>
-  
-</nav>
+</article>
 
+
+  
+    <article id="post-python-paramiko" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/09/04/python-paramiko/" class="article-date">
+  <time datetime="2013-09-04T07:22:15.000Z" itemprop="datePublished">9月 4 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/04/python-paramiko/">Python | paramiko模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、简介">一、简介</h3>
+<p>paramiko是用python语言写的一个模块，遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接。</p>
+<p>由于使用的是python这样的能够跨平台运行的语言，所以所有python支持的平台，如Linux, Solaris, BSD, MacOS X, Windows等，paramiko都可以支持，因此，如果需要使用SSH从一个平台连接到另外一个平台，进行一系列的操作时，paramiko是最佳工具之一</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2013/09/04/python-paramiko/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/09/04/python-paramiko/" data-id="xpsm2eahsq33epno" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
   
 </article>
 
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2013/09/">&laquo; Prev</a><a class="page-number" href="/archives/2013/09/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">

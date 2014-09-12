@@ -3,26 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Command | scp | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Command | scp">
-<meta property="og:url" content="http://yoursite.com/2013/07/31/linux-command-scp/">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/5/">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Command | scp">
-<meta name="twitter:description" content="一、scp 是什么？
-scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。
-二、scp 有什么用？
-1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
 
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -76,7 +67,107 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-linux-command-scp" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-python-paramiko" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/09/04/python-paramiko/" class="article-date">
+  <time datetime="2013-09-04T07:22:15.000Z" itemprop="datePublished">9月 4 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/04/python-paramiko/">Python | paramiko模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、简介">一、简介</h3>
+<p>paramiko是用python语言写的一个模块，遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接。</p>
+<p>由于使用的是python这样的能够跨平台运行的语言，所以所有python支持的平台，如Linux, Solaris, BSD, MacOS X, Windows等，paramiko都可以支持，因此，如果需要使用SSH从一个平台连接到另外一个平台，进行一系列的操作时，paramiko是最佳工具之一</p>
+
+        
+          <p class="article-more-link">
+            <a href="/2013/09/04/python-paramiko/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/09/04/python-paramiko/" data-id="xpsm2eahsq33epno" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-shell-bin-build" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/08/09/linux-shell-bin-build/" class="article-date">
+  <time datetime="2013-08-09T07:22:15.000Z" itemprop="datePublished">8月 9 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/09/linux-shell-bin-build/">Shell | linux bin安装文件制作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、linux_安装文件类型">一、linux 安装文件类型</h3>
+<p>linux常见的安装为 tar，zip，gz，rpm，deb，bin 等。我们可以简单的分为三类</p>
+<ul>
+<li>打包或压缩文件 tar，zip，gz 等，一般解压后即可编译安装</li>
+<li>对应的有管理工具的 deb，rpm 等，例如 ubuntu 中的 apt，redhat中的 yum</li>
+<li>像 bin 类，其实是把 sh 跟 zip 或 rpm 打包为 bin
+        
+          <p class="article-more-link">
+            <a href="/2013/08/09/linux-shell-bin-build/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/08/09/linux-shell-bin-build/" data-id="obl4w186qvb104xj" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-command-scp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2013/07/31/linux-command-scp/" class="article-date">
   <time datetime="2013-07-31T12:00:15.000Z" itemprop="datePublished">7月 31 2013</time>
@@ -89,8 +180,8 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Command | scp
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/31/linux-command-scp/">Command | scp</a>
     </h1>
   
 
@@ -102,24 +193,12 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
 <p>scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的命令，和它类似的命令有 cp，不过 cp 只是在本机进行拷贝不能跨服务器，而且 scp 传输是加密的。可能会稍微影响一下速度。</p>
 <h3 id="二、scp_有什么用？">二、scp 有什么用？</h3>
 <p>1、我们需要获得远程服务器上的某个文件，远程服务器既没有配置 ftp 服务器，没有开启 web 服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过 scp 命令便可轻松的达到目的。</p>
-<p>2、我们需要将本机上的文件上传到远程服务器上，远程服务器没有开启 ftp 服务器或共享，无法通过常规途径上传是，只需要通过 scp 命令便可以轻松的达到目的。<br><a id="more"></a></p>
-<h3 id="三、scp使用方法">三、scp使用方法</h3>
-<p><strong>1、获取远程服务器上的文件</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/root/squid</span>.conf /root/squid.conf</div></pre></td></tr></table></figure>
-
-<p><code>-P</code> 指定 ssh 端口，不指定默认端口为22</p>
-<p><strong>2、获取远程服务器上的目录</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> -r root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/etc/squid</span> /etc/squid</div></pre></td></tr></table></figure>
-
-<p><code>-r</code> 表示递归复制（即复制该目录下面的文件和目录），其它与上述一致</p>
-<p><strong>3、将本地文件上传到服务器上</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> /root/squid.conf root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/root</span></div></pre></td></tr></table></figure>
-
-<p><strong>4、将本地目录上传到服务器上</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp -<span class="constant">P</span> <span class="number">36000</span> -r /etc/squid root<span class="variable">@10</span>.<span class="number">2.68</span>.<span class="number">38</span><span class="symbol">:/etc/squid</span></div></pre></td></tr></table></figure>
-
-<p><strong>5、几个有用的参数</strong><br>-v 用来显示进度，可以用来查看连接、认证或错误配置信息<br>-C 压缩选项<br>-4 强行使用 IPV4 地址<br>-6 强行使用 IPV6 地址</p>
-
+<p>2、我们需要将本机上的文件上传到远程服务器上，远程服务器没有开启 ftp 服务器或共享，无法通过常规途径上传是，只需要通过 scp 命令便可以轻松的达到目的。<br>
+        
+          <p class="article-more-link">
+            <a href="/2013/07/31/linux-command-scp/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -133,29 +212,105 @@ scp 是 secure copy 的简写，用于在 Linux 下进行远程拷贝文件的�
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2013/08/09/linux-shell-bin-build/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Shell | linux bin安装文件制作
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/07/31/saltstack-vim-syntax-highlighting/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Vim | Saltstack文件高亮插件</div>
-    </a>
-  
-</nav>
+</article>
 
+
+  
+    <article id="post-saltstack-vim-syntax-highlighting" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/31/saltstack-vim-syntax-highlighting/" class="article-date">
+  <time datetime="2013-07-31T08:10:35.000Z" itemprop="datePublished">7月 31 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/31/saltstack-vim-syntax-highlighting/">Vim | Saltstack文件高亮插件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>写代码啥的都是用 vim，自然语法高亮是必须的，在逛 github 的时候发现了关于 Saltstack 配置文件高亮插件<br>
+        
+          <p class="article-more-link">
+            <a href="/2013/07/31/saltstack-vim-syntax-highlighting/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/07/31/saltstack-vim-syntax-highlighting/" data-id="senmzibcqa6ku24y" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
   
 </article>
 
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/12/hello-world/" class="article-date">
+  <time datetime="2013-07-12T12:41:25.000Z" itemprop="datePublished">7月 12 2013</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/12/hello-world/">Test | Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://zespia.tw/hexo" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs" target="_blank" rel="external">documentation</a> to learn how to use.<br>
+        
+          <p class="article-more-link">
+            <a href="/2013/07/12/hello-world/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/2013/07/12/hello-world/" data-id="72lscskwui554v2f" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">
