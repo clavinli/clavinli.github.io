@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Server | CentOs 6配置NFS服务 | ......</title>
+  <meta name="author" content="Clavin Li">
+  
+  <meta name="description" content="一、配置NFS服务端
+# yum install nfs-utils portmap （适用于CentOS 5）# yum install nfs-utils rpcbind （适用于CentOS 6）">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="Server | CentOs 6配置NFS服务"/>
+  <meta property="og:site_name" content="......"/>
+
+  <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">......</a></h1>
+  <p><a href="/"></a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-09-25T01:07:40.000Z"><a href="/2014/09/25/linux-server-nfs/">9月 25 2014</a></time>
+    
+    
+  
+    <h1 class="title">Server | CentOs 6配置NFS服务</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、配置NFS服务端">一、配置NFS服务端</h3>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># yum install nfs-utils portmap （适用于CentOS 5）</span></div><div class="line"><span class="preprocessor"># yum install nfs-utils rpcbind （适用于CentOS 6）</span></div></pre></figure>
+
+<a id="more"></a>
+
+<p>假设服务端要挂载的目录是/data/file，设置如下</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># mkdir /data/file</span></div><div class="line"><span class="preprocessor"># vim /etc/exports</span></div><div class="line">/<span class="typedef"><span class="keyword">data</span>/file  192.168.1.0/24<span class="container">(<span class="title">rw</span>,<span class="title">sync</span>)</span></span></div><div class="line"></div><div class="line">也可以用以下的写法：</div><div class="line">/<span class="typedef"><span class="keyword">data</span>/file  192.168.1.0/24<span class="container">(<span class="title">ro</span>,<span class="title">no_root_squash</span>)</span></span></div><div class="line">/<span class="typedef"><span class="keyword">data</span>/file  *<span class="container">(<span class="title">rw</span>,<span class="title">sync</span>,<span class="title">no_root_squash</span>)</span></span></div></pre></figure>
+
+<p>参数说明：<br>rw：read-write，可读写；<br>ro：read-only，只读；<br>sync：同步写入（文件同时写入硬盘和内存），适用在通信比较频繁且实时性比较高的场合；<br>async：异步写入（文件先写入内存，稍候再写入硬盘），性能较好（速度快），适合超大或者超多文件的写入，但有数据丢失的风险，比如突然断电等情况；<br>注意：除非特別有需要，否则不建议使用 async。如果沒有指定 sync 或 async，NFS 服务器在启动的时候会印出警告信息。<br>no_root_squash：NFS客户端连接服务端时如果使用的是 root 的话，那么对服务端分享的目录也使用 root 权限。不安全！<br>root_squash：把客户端 root 身份的 UID/GID (0/0) 对应到服务端的 nobody 用户去，即服务端使用 nobody 用户来操作共享目录；<br>all_squash：不论NFS客户端连接服务端时使用什么用户，对服务端分享的目录来说都是拥有匿名用户权限；<br>anonuid：匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定；<br>anongid：匿名用户的GID值。</p>
+<p>设置开机启动</p>
+<figure class="highlight"><pre><div class="line"># /etc/init.d/rpcbind/<span class="operator"><span class="keyword">start</span> && chkconfig rpcbind <span class="keyword">on</span></span></div><div class="line"># /etc/init.d/nfs <span class="keyword">start</span> && chkconfig nfs <span class="keyword">on</span></div></pre></figure>
+
+<h3 id="2、配置NFS客户端">2、配置NFS客户端</h3>
+<p>客户端也需要安装以下两个软件包，否则会提示mount: wrong fs type, bad option, bad superblock on xxx的错误</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># yum install nfs-utils portmap （适用于CentOS 5）</span></div><div class="line"><span class="preprocessor"># yum install nfs-utils rpcbind （适用于CentOS 6）</span></div></pre></figure>
+
+<p>客户端不需要启动rpcbind和nfs服务</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># shoumount -e 192.168.1.2  # 查看服务端共享的目录</span></div><div class="line"><span class="title">Export</span> list for <span class="number">192.168.1.2</span>:</div><div class="line">/data/file <span class="number">192.168.1.0</span>/<span class="number">24</span></div></pre></figure>
+
+<p>挂载到本地</p>
+<figure class="highlight"><pre><div class="line"># mount -t nfs <span class="number">192.168</span>.<span class="number">1.2</span>:<span class="regexp">/data/</span><span class="keyword">file</span> <span class="regexp">/mnt/</span> -o nolock</div><div class="line"># mount -t nfs <span class="number">192.168</span>.<span class="number">1.2</span>:<span class="regexp">/data/</span><span class="keyword">file</span> <span class="regexp">/mnt/</span> -o nolock -o proto=tcp  #也可以写成这样</div></pre></figure>
+
+<p><strong><em>备注</em></strong><br>NFS默认是用UDP协议，也可以加上-o proto=tcp换成TCP协议</p>
+<p>设置开机自动加载</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># vim /etc/fstab</span></div><div class="line"><span class="number">192.168</span>.<span class="number">1.2</span><span class="symbol">:/data/file</span>    /mnt/  nfs  defaults   <span class="number">1</span> <span class="number">2</span></div><div class="line"><span class="comment"># mount -a</span></div></pre></figure>
+
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+<div class="widget recent-posts first">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget blogroll">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://heroicyang.com/" target="_blank">Heroic Yang&#39;s Blog</a></li>
+  
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Clavin Li</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

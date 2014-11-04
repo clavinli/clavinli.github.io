@@ -1,98 +1,59 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>Python | 多进程 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Python | 多进程 | ......</title>
+  <meta name="author" content="Clavin Li">
+  
   <meta name="description" content="一、简介
 Python标准库中有很多实用的工具类，但是在具体使用时，标准库文档上对使用细节描述的并不清楚，比如urllib2这个HTTP客户端库。这里总结了一些urllib2的使用细节。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python | 多进程">
-<meta property="og:url" content="http://yoursite.com/2014/05/15/python-multiprocessing/">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、简介
-Python标准库中有很多实用的工具类，但是在具体使用时，标准库文档上对使用细节描述的并不清楚，比如urllib2这个HTTP客户端库。这里总结了一些urllib2的使用细节。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python | 多进程">
-<meta name="twitter:description" content="一、简介
-Python标准库中有很多实用的工具类，但是在具体使用时，标准库文档上对使用细节描述的并不清楚，比如urllib2这个HTTP客户端库。这里总结了一些urllib2的使用细节。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <meta property="og:title" content="Python | 多进程"/>
+  <meta property="og:site_name" content="......"/>
 
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   
 </head>
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
-        </form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-python-multiprocessing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/15/python-multiprocessing/" class="article-date">
-  <time datetime="2014-05-15T02:06:00.000Z" itemprop="datePublished">5月 15 2014</time>
-</a>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">......</a></h1>
+  <p><a href="/"></a></p>
+</div>
+<nav class="nav">
+  <ul>
     
-  </div>
-  <div class="article-inner">
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2014-05-15T02:06:00.000Z"><a href="/2014/05/15/python-multiprocessing/">5月 15 2014</a></time>
     
     
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      Python | 多进程
-    </h1>
+    <h1 class="title">Python | 多进程</h1>
   
 
-      </header>
+  </header>
+  
+  <div class="entry">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、简介">一、简介</h3>
+      <h3 id="一、简介">一、简介</h3>
 <p>Python标准库中有很多实用的工具类，但是在具体使用时，标准库文档上对使用细节描述的并不清楚，比如urllib2这个HTTP客户端库。这里总结了一些urllib2的使用细节。<br><a id="more"></a></p>
 <ul>
 <li>Proxy设置</li>
@@ -106,134 +67,154 @@ Python标准库中有很多实用的工具类，但是在具体使用时，标�
 </ul>
 <h3 id="二、Proxy设置">二、Proxy设置</h3>
 <p>urllib2默认会使用环境变量http_proxy来设置HTTP Proxy。如果想在程序中明确控制Proxy而不受环境变量的影响，可以使用下面的方式</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"><span class="variable">enable_proxy =</span> True</div><div class="line"><span class="variable">proxy_handler =</span> urllib2.ProxyHandler({<span class="string">"http"</span> : 'http://some-proxy.com:<span class="number">8080</span>'})</div><div class="line"><span class="variable">null_proxy_handler =</span> urllib2.ProxyHandler({})</div><div class="line"><span class="keyword">if</span> enable_proxy:</div><div class="line">    <span class="variable">opener =</span> urllib2.build_opener(proxy_handler)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="variable">opener =</span> urllib2.build_opener(null_proxy_handler)</div><div class="line"></div><div class="line">urllib2.install_opener(opener)</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"><span class="variable">enable_proxy =</span> True</div><div class="line"><span class="variable">proxy_handler =</span> urllib2.ProxyHandler({<span class="string">"http"</span> : 'http://some-proxy.com:<span class="number">8080</span>'})</div><div class="line"><span class="variable">null_proxy_handler =</span> urllib2.ProxyHandler({})</div><div class="line"><span class="keyword">if</span> enable_proxy:</div><div class="line">    <span class="variable">opener =</span> urllib2.build_opener(proxy_handler)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="variable">opener =</span> urllib2.build_opener(null_proxy_handler)</div><div class="line"></div><div class="line">urllib2.install_opener(opener)</div></pre></figure>
 
 <p>这里要注意的一个细节，使用urllib2.install_opener()会设置urllib2的全局opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的Proxy设置等。比较好的做法是不使用install_opener去更改全局的设置，而只是直接调用opener的open方法代替全局的urlopen方法。</p>
 <h3 id="三、Timeout设置">三、Timeout设置</h3>
 <p>在老版Python中，urllib2的API并没有暴露Timeout的设置，要设置Timeout值，只能更改Socket的全局 Timeout 值。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span><span class="preprocessor"></span></div><div class="line"># _*_ coding=utf-8 _*_</div><div class="line"></div><div class="line"><span class="preprocessor"><span class="keyword">import</span> socket</span></div><div class="line"><span class="preprocessor"><span class="keyword">import</span> urllib2</span></div><div class="line"></div><div class="line">socket.setdefaulttimeout(<span class="number">10</span>)<span class="preprocessor"> # 10 秒钟后超时</span></div><div class="line">urllib2.socket.setdefaulttimeout(<span class="number">10</span>)<span class="preprocessor"> # 另一种方式</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span><span class="preprocessor"></span></div><div class="line"># _*_ coding=utf-8 _*_</div><div class="line"></div><div class="line"><span class="preprocessor"><span class="keyword">import</span> socket</span></div><div class="line"><span class="preprocessor"><span class="keyword">import</span> urllib2</span></div><div class="line"></div><div class="line">socket.setdefaulttimeout(<span class="number">10</span>)<span class="preprocessor"> # 10 秒钟后超时</span></div><div class="line">urllib2.socket.setdefaulttimeout(<span class="number">10</span>)<span class="preprocessor"> # 另一种方式</span></div></pre></figure>
 
 <p>在Python 2.6以后，超时可以通过urllib2.urlopen()的timeout 参数直接设置。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"><span class="variable">response =</span> urllib2.urlopen('http://www.google.com', <span class="variable">timeout=</span><span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"><span class="variable">response =</span> urllib2.urlopen('http://www.google.com', <span class="variable">timeout=</span><span class="number">10</span>)</div></pre></figure>
 
 <h3 id="四、在HTTP_Request中加入特定的Header">四、在HTTP Request中加入特定的Header</h3>
 <p>要加入header，需要使用Request对象：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span></div><div class="line"><span class="preprocessor"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line"></div><div class="line">request = urllib2.Request(uri)</div><div class="line">request.add_header(<span class="string">'User-Agent'</span>, <span class="string">'fake-client'</span>)</div><div class="line">response = urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span></div><div class="line"><span class="preprocessor"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line"></div><div class="line">request = urllib2.Request(uri)</div><div class="line">request.add_header(<span class="string">'User-Agent'</span>, <span class="string">'fake-client'</span>)</div><div class="line">response = urllib2.urlopen(request)</div></pre></figure>
 
 <p>对有些header要特别留意，服务器会针对这些header做检查，在使用服务器提供的RESTful或SOAP服务时，Content-Type设置错误会导致服务器拒绝服务</p>
 <ul>
 <li>User-Agent: 有些服务器或Proxy会通过该值来判断是否是浏览器发出的请求</li>
 <li>Content-Type: 在使用REST接口时，服务器会检查该值，用来确定HTTP Body中的内容该怎样解析。常见的取值有：</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="type">application</span>/xml：在XML RPC，如RESTful/SOAP调用时使用</div><div class="line"><span class="type">application</span>/json：在JSON RPC调用时使用</div><div class="line"><span class="type">application</span>/x-www-form-urlencoded：浏览器提交Web表单时使用</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="type">application</span>/xml：在XML RPC，如RESTful/SOAP调用时使用</div><div class="line"><span class="type">application</span>/json：在JSON RPC调用时使用</div><div class="line"><span class="type">application</span>/x-www-form-urlencoded：浏览器提交Web表单时使用</div></pre></figure>
 
 <h3 id="五、Redirect">五、Redirect</h3>
 <p>urllib2默认情况下会针对HTTP 3XX返回码自动进行redirect动作，无需人工配置。要检测是否发生了redirect动作，只要检查一下Response的URL和Request的URL是否一致就可以了。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span></div><div class="line"><span class="preprocessor"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://www.google.cn'</span>)</div><div class="line">redirected = response.geturl() == <span class="string">'http://www.google.cn'</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor">#!/usr/bin/python</span></div><div class="line"><span class="preprocessor"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line"></div><div class="line">response = urllib2.urlopen(<span class="string">'http://www.google.cn'</span>)</div><div class="line">redirected = response.geturl() == <span class="string">'http://www.google.cn'</span></div></pre></figure>
 
 <p>如果不想自动redirect，除了使用更低层次的httplib库之外，还可以自定义HTTPRedirectHandler类。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedirectHandler</span><span class="params">(urllib2.HTTPRedirectHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">http_error_301</span><span class="params">(self, req, fp, code, msg, headers)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">http_error_302</span><span class="params">(self, req, fp, code, msg, headers)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">opener = urllib2.build_opener(RedirectHandler)</div><div class="line">opener.open(<span class="string">'http://www.google.cn'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedirectHandler</span><span class="params">(urllib2.HTTPRedirectHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">http_error_301</span><span class="params">(self, req, fp, code, msg, headers)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">http_error_302</span><span class="params">(self, req, fp, code, msg, headers)</span>:</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">opener = urllib2.build_opener(RedirectHandler)</div><div class="line">opener.open(<span class="string">'http://www.google.cn'</span>)</div></pre></figure>
 
 <h3 id="六、Cookie">六、Cookie</h3>
 <p>urllib2对Cookie的处理也是自动的。如果需要得到某个Cookie项的值，可以这么做：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line">import cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar()</div><div class="line">opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))</div><div class="line">response = opener.<span class="built_in">open</span>(<span class="string">'http://www.google.com'</span>)</div><div class="line"><span class="keyword">for</span> <span class="keyword">item</span> <span class="operator">in</span> cookie:</div><div class="line">    <span class="keyword">if</span> <span class="keyword">item</span>.name == <span class="string">'some_cookie_item_name'</span>:</div><div class="line">        print <span class="keyword">item</span>.<span class="built_in">value</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line">import urllib2</div><div class="line">import cookielib</div><div class="line"></div><div class="line">cookie = cookielib.CookieJar()</div><div class="line">opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))</div><div class="line">response = opener.<span class="built_in">open</span>(<span class="string">'http://www.google.com'</span>)</div><div class="line"><span class="keyword">for</span> <span class="keyword">item</span> <span class="operator">in</span> cookie:</div><div class="line">    <span class="keyword">if</span> <span class="keyword">item</span>.name == <span class="string">'some_cookie_item_name'</span>:</div><div class="line">        print <span class="keyword">item</span>.<span class="built_in">value</span></div></pre></figure>
 
 <h3 id="七、使用HTTP的PUT和DELETE方法">七、使用HTTP的PUT和DELETE方法</h3>
 <p>urllib2只支持HTTP的GET和POST方法，如果要使用HTTP PUT和DELETE，只能使用比较低层的httplib库。虽然如此，我们还是能通过下面的方式，使urllib2能够发出PUT或DELETE的请求：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"></div><div class="line"><span class="variable">request =</span> urllib2.Request(uri, <span class="variable">data=</span>data)</div><div class="line">request.<span class="variable">get_method =</span> lambda: 'PUT' <span class="comment"># or 'DELETE'</span></div><div class="line"><span class="variable">response =</span> urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"></div><div class="line"><span class="variable">request =</span> urllib2.Request(uri, <span class="variable">data=</span>data)</div><div class="line">request.<span class="variable">get_method =</span> lambda: 'PUT' <span class="comment"># or 'DELETE'</span></div><div class="line"><span class="variable">response =</span> urllib2.urlopen(request)</div></pre></figure>
 
 <p>这种做法虽然属于Hack的方式，但实际使用起来也没什么问题。</p>
 <h3 id="八、得到HTTP的返回码">八、得到HTTP的返回码</h3>
 <p>对于200 OK来说，只要使用urlopen返回的response对象的getcode()方法就可以得到HTTP的返回码。但对其它返回码来说，urlopen会抛出异常。这时候，就要检查异常对象的code属性了：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    response = urllib2.urlopen(<span class="string">'http://restrict.web.com'</span>)</div><div class="line"><span class="keyword">except</span> urllib2.HTTPError, e:</div><div class="line">    <span class="keyword">print</span> e.code</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    response = urllib2.urlopen(<span class="string">'http://restrict.web.com'</span>)</div><div class="line"><span class="keyword">except</span> urllib2.HTTPError, e:</div><div class="line">    <span class="keyword">print</span> e.code</div></pre></figure>
 
 <h3 id="九、Debug_Log">九、Debug Log</h3>
 <p>使用urllib2时，可以通过下面的方法把debug Log打开，这样收发包的内容就会在屏幕上打印出来，方便调试，有时可以省去抓包的工作</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"></div><div class="line"><span class="variable">httpHandler =</span> urllib2.HTTPHandler(<span class="variable">debuglevel=</span><span class="number">1</span>)</div><div class="line"><span class="variable">httpsHandler =</span> urllib2.HTTPSHandler(<span class="variable">debuglevel=</span><span class="number">1</span>)</div><div class="line"><span class="variable">opener =</span> urllib2.build_opener(httpHandler, httpsHandler)</div><div class="line"></div><div class="line">urllib2.install_opener(opener)</div><div class="line"><span class="variable">response =</span> urllib2.urlopen('http://www.google.com')</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment"># _*_ coding=utf-8 _*_</span></div><div class="line"></div><div class="line"><span class="built_in">import</span> urllib2</div><div class="line"></div><div class="line"><span class="variable">httpHandler =</span> urllib2.HTTPHandler(<span class="variable">debuglevel=</span><span class="number">1</span>)</div><div class="line"><span class="variable">httpsHandler =</span> urllib2.HTTPSHandler(<span class="variable">debuglevel=</span><span class="number">1</span>)</div><div class="line"><span class="variable">opener =</span> urllib2.build_opener(httpHandler, httpsHandler)</div><div class="line"></div><div class="line">urllib2.install_opener(opener)</div><div class="line"><span class="variable">response =</span> urllib2.urlopen('http://www.google.com')</div></pre></figure>
 
 <p><strong>转载地址：<a href="http://zhuoqiang.me/python-urllib2-usage.html#id5" target="_blank" rel="external">http://zhuoqiang.me/python-urllib2-usage.html#id5</a></strong></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2014/05/15/python-multiprocessing/" data-id="utmvrna2qdvzl7lu" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-
-      
-    </footer>
-  </div>
-  
     
-<nav id="article-nav">
-  
-    <a href="/2014/09/21/linux-lvs-performance-optimize/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LVS |  LVS性能调优小记
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2014/05/15/python-pypi/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Python | pypi安装提示error invalid command &#39;egg_info&#39;</div>
-    </a>
-  
-</nav>
-
-  
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
 </article>
 
-</section>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2014 Clavin Li<br>
-      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
   </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+<div class="widget recent-posts first">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget blogroll">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://heroicyang.com/" target="_blank">Heroic Yang&#39;s Blog</a></li>
+  
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Clavin Li</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
 </body>
 </html>

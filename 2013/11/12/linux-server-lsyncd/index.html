@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Lsyncd | 使用lsyncd同步文件目录 | ......</title>
+  <meta name="author" content="Clavin Li">
+  
+  <meta name="description" content="一、lsyncd是什么？
+前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，立刻通知远程服务器，并通过rsync 或rsync+ssh方式实现文件同步。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="Lsyncd | 使用lsyncd同步文件目录"/>
+  <meta property="og:site_name" content="......"/>
+
+  <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">......</a></h1>
+  <p><a href="/"></a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-11-12T05:20:15.000Z"><a href="/2013/11/12/linux-server-lsyncd/">11月 12 2013</a></time>
+    
+    
+  
+    <h1 class="title">Lsyncd | 使用lsyncd同步文件目录</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、lsyncd是什么？">一、lsyncd是什么？</h3>
+<p>前几天有个同事问道说怎么去同步远程服务器上的文件或目录，第一反应当然是想到说用rsync，但是时效性有点差（调用cron），刚好在vpsee的博客看到有介绍说用lsyncd，它采用了Linux内核（2.6.13 及以后）里的inotify触发机制，这种机制可以做到只有在需要（变化）的时候才去同步。lsyncd密切监测本地服务器上的参照目录，当发现目录下有文件或目录变更后，立刻通知远程服务器，并通过rsync 或rsync+ssh方式实现文件同步。<br><a id="more"></a></p>
+<h3 id="二、lsyncd安装">二、lsyncd安装</h3>
+<p>CentOS官方源没有包含lsyncd，需要去安装epel源才有</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># yum install lsyncd</span></div></pre></figure>
+
+<h3 id="三、lsyncd使用">三、lsyncd使用</h3>
+<p>lsyncd安装完后默认并没有提供配置文件，不过我们可以去/usr/share/doc/lsyncd/examples找相关例子</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># cd /usr/share/doc/lsyncd-*/examples;ls</span></div><div class="line">lbash.lua  lecho.lua  lgforce.lua  lpostcmd.lua  lrsync.lua  lrsyncssh.lua</div><div class="line"><span class="comment"># vim lrsyncssh.lua</span></div><div class="line">-- Simple example for default rsync.</div><div class="line"><span class="variable">settings =</span> { </div><div class="line">    <span class="variable">statusFile =</span> <span class="string">"/tmp/lsyncd.stat"</span>,</div><div class="line">    <span class="variable">statusInterval =</span> <span class="number">1</span>,</div><div class="line">}</div><div class="line"></div><div class="line">sync{</div><div class="line">    default.rsync,</div><div class="line">    <span class="variable">source=</span><span class="string">"src"</span>,</div><div class="line">    <span class="variable">target=</span><span class="string">"trg"</span>,</div><div class="line">}</div></pre></figure>
+
+<p><strong>备注</strong><br>lsyncd的配置文件使用的是lua风格的。更多详情请访问 <a href="http://www.lua.org" target="_blank" rel="external">Lua</a></p>
+<p>了解完之后我们就来实验一番先。首先先配置lsyncd，格式很简单，注意source、host、targetdir部分即可</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># vim /etc/lsyncd.conf</span></div><div class="line">settings {</div><div class="line">    <span class="variable">logfile =</span> <span class="string">"/var/log/lsyncd/lsyncd.log"</span>,</div><div class="line">    <span class="variable">statusFile =</span> <span class="string">"/var/log/lsyncd/lsyncd.status"</span></div><div class="line">}</div><div class="line"></div><div class="line">sync {</div><div class="line">    default.rsyncssh,</div><div class="line">    <span class="variable">source =</span> <span class="string">"/root/clavinli"</span>,</div><div class="line">    <span class="variable">host =</span> <span class="string">"10.2.68.38"</span>,</div><div class="line">    <span class="variable">targetdir =</span> <span class="string">"/tmp/clavinli"</span>,</div><div class="line">    <span class="variable">ssh =</span> {</div><div class="line">        <span class="variable">port =</span> <span class="number">36000</span></div><div class="line">    }</div><div class="line">}</div></pre></figure>
+
+<p>因为这里使用rsyncssh进行同步，所以还需要配置root账号无密码ssh登录，然后在远程机器上创建目录/tmp/clavinli</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># ssh-keygen -t rsa</span></div><div class="line"><span class="preprocessor"># ssh-copy-id root@10.2.68.38</span></div><div class="line"><span class="preprocessor"># ssh -p36000 root@10.2.68.38</span></div><div class="line"><span class="preprocessor"># mkdir /tmp/clavinli</span></div></pre></figure>
+
+<p>配置好之后在本地机器上启动lsyncd服务，这时本地机器的/root/clavinli目录就会同步到10.2.68.38的/tmp/clavinli目录了</p>
+<figure class="highlight"><pre><div class="line"><span class="input"><span class="prompt"># tail -f /var/log/lsyncd/lsyncd.log</span></span></div><div class="line">Tue Nov 12 14:09:27 2013 Normal: --- TERM signal, fading ---</div><div class="line">Tue Nov 12 14:09:28 2013 Normal: recursive startup rsync: /root/clavinli/ -&gt; <span class="number">10.2</span>.<span class="number">68.38</span><span class="symbol">:/tmp/clavinli/</span></div></pre></figure>
+
+<p><strong>备注</strong><br>lsyncd使用rsyncssh同步的时候是调用ssh的22端口，但因为我这边使用了非常规的ssh端口，因此这里需要额外添加个ssh的选项</p>
+<h3 id="四、lsyncd优化">四、lsyncd优化</h3>
+<p>在使用lsyncd的时候做了个测试，创建大量的文件(超过10000)会提示：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># tail -f /var/log/lsyncd/lsyncd.log</span></div><div class="line"><span class="type">Tue</span> <span class="type">Nov</span> <span class="number">12</span> <span class="number">14</span>:<span class="number">56</span>:<span class="number">23</span> <span class="number">2013</span> <span class="type">Error</span>: <span class="type">Terminating</span> since <span class="keyword">out</span> <span class="keyword">of</span> inotify watches.</div><div class="line"><span class="type">Consider</span> increasing /<span class="keyword">proc</span>/sys/fs/inotify/max_user_watches</div></pre></figure>
+
+<p>刚开始就提到说lsyncd使用了inotify触发机制，但是监控的文件数是有限的（默认是8192）</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># vim /etc/sysctl.conf</span></div><div class="line"><span class="preprocessor"># Controls the maximum inotify watches per user</span></div><div class="line">fs.inotify.max_user_watches = <span class="number">1048576</span></div><div class="line"><span class="preprocessor"># sysctl -p</span></div></pre></figure>
+
+<p>现在他就没有这个限制了^^</p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+<div class="widget recent-posts first">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget blogroll">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://heroicyang.com/" target="_blank">Heroic Yang&#39;s Blog</a></li>
+  
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Clavin Li</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

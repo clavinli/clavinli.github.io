@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Nodejs | 使用Hexo在Github上搭建博客 | ......</title>
+  <meta name="author" content="Clavin Li">
+  
+  <meta name="description" content="一、简介
+Hexo 是一个基于 Node.js 的博客框架，采用 Markdown 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta property="og:title" content="Nodejs | 使用Hexo在Github上搭建博客"/>
+  <meta property="og:site_name" content="......"/>
+
+  <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  
+</head>
+
+
+<body>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">......</a></h1>
+  <p><a href="/"></a></p>
+</div>
+<nav class="nav">
+  <ul>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-09-09T06:57:00.000Z"><a href="/2013/09/09/linux-server-nodej_hexo/">9月 9 2013</a></time>
+    
+    
+  
+    <h1 class="title">Nodejs | 使用Hexo在Github上搭建博客</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、简介">一、简介</h3>
+<p><a href="http://zespia.tw/hexo/" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a> 的博客框架，采用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="external">Markdown</a> 语法编写博客内容，作为静态博客来说，比起Octopress，生成文章速度给力多了。好吧，其实我也还没用过Octopress，但是有更好的替代品为啥不用呢^^</p>
+<a id="more"></a>
+
+<h3 id="二、安装">二、安装</h3>
+<p>安装Hexo还是挺简单的，但是前提还是有以下这些环境才行<br><a href="http://git-scm.com/" target="_blank" rel="external">Git</a></p>
+<figure class="highlight"><pre><div class="line">$ sudo apt-<span class="keyword">get</span> install git-core</div><div class="line"><span class="preprocessor"># yum install git-core</span></div></pre></figure>
+
+<p><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a></p>
+<figure class="highlight"><pre><div class="line"># curl http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div><div class="line"># nvm install <span class="number">0.10</span></div></pre></figure>
+
+<p><a href="http://zespia.tw/hexo/" target="_blank" rel="external">Hexo</a></p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># npm install -g hexo</span></div></pre></figure>
+
+<h3 id="三、使用">三、使用</h3>
+<p>初始化hexo到blog</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># hexo init blog</span></div><div class="line">[info] Creating file: <span class="keyword">source</span>/_posts/hello-world.md</div><div class="line">[info] Creating file: package.json</div><div class="line">[info] Creating file: .gitignore</div><div class="line"><span class="keyword">...</span></div></pre></figure>
+
+<p>新建文章</p>
+<figure class="highlight"><pre><div class="line"># hexo <span class="keyword">new</span> <span class="string">"Hello World"</span></div><div class="line">[info] <span class="keyword">File</span> created at <span class="regexp">/root/</span>clavinli<span class="regexp">/blog/</span><span class="keyword">source</span><span class="regexp">/_posts/</span>hello-world.md</div></pre></figure>
+
+<p>生成文章</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># hexo generate</span></div><div class="line">[info] Files loaded <span class="keyword">in</span> <span class="number">0.</span>547s</div><div class="line">[create] Public: archives/index.html</div><div class="line">[create] Public: archives/<span class="number">2013</span>/index.html</div><div class="line"><span class="keyword">...</span></div></pre></figure>
+
+<p>使用自带的server预览</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># hexo server</span></div></pre></figure>
+
+<p>发布到github</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># hexo deploy</span></div><div class="line">[info] Start deploying: github</div><div class="line">[info] Clearing .deploy folder...</div><div class="line">[info] Copying files from public folder...</div><div class="line"><span class="keyword">...</span></div></pre></figure>
+
+<h3 id="四、部署到Github">四、部署到Github</h3>
+<p>首先需要去 <a href="https://github.com/signup/free" target="_blank" rel="external">Github</a> 注册个账号，过程不表<br><img src="https://lh3.googleusercontent.com/-aR8U7aTfm7E/U3sc7rWZUKI/AAAAAAAAAIs/xb9l8Q31Ty8/s1033/nodejs-hexo-1.png" alt="nodejs-hexo-1.png"></p>
+<p>创建repository<br>在自己的Github主页右下角，创建一个新的repository。比如我的Github账号是clavinli，那么我创建的repository名字应该是clavinli.github.io<br><img src="https://lh3.googleusercontent.com/-bmryIDG5jSM/U3sc7jlJaSI/AAAAAAAAAIo/SxoLtWA1kV8/s376/nodejs-hexo-2.png" alt="nodejs-hexo-2.png"></p>
+<p>部署<br>编辑_config.yml，把下面的clavinli换成你自己的账号名</p>
+<figure class="highlight"><pre><div class="line">deploy:</div><div class="line">  <span class="class"><span class="keyword">type</span>: <span class="title">github</span></span></div><div class="line">    repository: https:<span class="comment">//github.com/clavinli/clavinli.github.io.git</span></div><div class="line">      branch: master</div></pre></figure>
+
+<p>执行下列命令即可完成部署</p>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># hexo generate</span></div><div class="line"><span class="preprocessor"># hexo deploy</span></div></pre></figure>
+
+<p><strong>备注</strong></p>
+<figure class="highlight"><pre><div class="line">每次修改完文件后，需要先hexo <span class="keyword">generate</span>下再hexo deploy才能上传到Github</div></pre></figure>
+
+<p><strong>OK，到此为止，一个基于Github Page的个人博客就搭建完成了。</strong></p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+</div>
+  </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+<div class="widget recent-posts first">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget blogroll">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://heroicyang.com/" target="_blank">Heroic Yang&#39;s Blog</a></li>
+  
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Clavin Li</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>

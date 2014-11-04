@@ -1,231 +1,209 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>Saltstack | Saltstack配置（二） | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Saltstack | Saltstack配置（二） | ......</title>
+  <meta name="author" content="Clavin Li">
+  
   <meta name="description" content="一、Saltstack配置介绍
 Salt的配置非常简单（使用YAML风格），master的默认配置就能顺利跑起来了，minion端的话也只需要设置下master的IP即可
 mastermaster是所有minions的中心控制点，minions上运行的命令，数据返回都是通过master的（除了returner外）
-minionminion安装在每台需要被控制机器上，用来接收master的指令等。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Saltstack | Saltstack配置（二）">
-<meta property="og:url" content="http://yoursite.com/2013/09/06/saltstack-configure/">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一、Saltstack配置介绍
-Salt的配置非常简单（使用YAML风格），master的默认配置就能顺利跑起来了，minion端的话也只需要设置下master的IP即可
-mastermaster是所有minions的中心控制点，minions上运行的命令，数据返回都是通过master的（除了returner外）
-minionminion安装在每台需要被控制机器上，用来接收master的指令等。">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Saltstack | Saltstack配置（二）">
-<meta name="twitter:description" content="一、Saltstack配置介绍
-Salt的配置非常简单（使用YAML风格），master的默认配置就能顺利跑起来了，minion端的话也只需要设置下master的IP即可
-mastermaster是所有minions的中心控制点，minions上运行的命令，数据返回都是通过master的（除了returner外）
-minionminion安装在每台需要被控制机器上，用来接收master的指令等。">
+minionminion安装在每台需要被控制机器上，用来接收master的指令等。
+配置文件默认的配置文件均放在/etc/salt，分别是/etc/salt/master和/etc/salt/minion">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <meta property="og:title" content="Saltstack | Saltstack配置（二）"/>
+  <meta property="og:site_name" content="......"/>
 
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   
 </head>
+
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-          <input type="submit" value="" class="search-form-submit">
-          <input name=tn type=hidden value="bds">
-          <input name=cl type=hidden value="3">
-          <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="yoursite.com">
-        </form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-saltstack-configure" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/09/06/saltstack-configure/" class="article-date">
-  <time datetime="2013-09-06T03:19:15.000Z" itemprop="datePublished">9月 6 2013</time>
-</a>
+  <div class="wrapper">
+    <header id="header"><div class="title">
+  <h1><a href="/">......</a></h1>
+  <p><a href="/"></a></p>
+</div>
+<nav class="nav">
+  <ul>
     
-  </div>
-  <div class="article-inner">
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-09-06T03:19:15.000Z"><a href="/2013/09/06/saltstack-configure/">9月 6 2013</a></time>
     
     
-      <header class="article-header">
-        
   
-    <h1 class="article-title" itemprop="name">
-      Saltstack | Saltstack配置（二）
-    </h1>
+    <h1 class="title">Saltstack | Saltstack配置（二）</h1>
   
 
-      </header>
+  </header>
+  
+  <div class="entry">
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、Saltstack配置介绍">一、Saltstack配置介绍</h3>
+      <h3 id="一、Saltstack配置介绍">一、Saltstack配置介绍</h3>
 <p>Salt的配置非常简单（使用YAML风格），master的默认配置就能顺利跑起来了，minion端的话也只需要设置下master的IP即可</p>
 <p><strong>master</strong><br>master是所有minions的中心控制点，minions上运行的命令，数据返回都是通过master的（除了returner外）</p>
 <p><strong>minion</strong><br>minion安装在每台需要被控制机器上，用来接收master的指令等。</p>
 <p><strong>配置文件</strong><br>默认的配置文件均放在/etc/salt，分别是/etc/salt/master和/etc/salt/minion<br><a id="more"></a></p>
 <h3 id="二、master配置">二、master配置</h3>
 <p>默认master监听4505跟4506的所有接口，如需改变IP，可以修改/etc/salt/master的interface选项，如：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># vim /etc/salt/master</span></div><div class="line"><span class="class"><span class="keyword">interface</span>: 10.0.0.1</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># vim /etc/salt/master</span></div><div class="line"><span class="class"><span class="keyword">interface</span>: 10.0.0.1</span></div></pre></figure>
 
 <p>更新完配置文件后，重启master即可生效</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /etc/salt/salt-master restart</span></div><div class="line"><span class="keyword">Stopping</span> salt-master daemon:                              <span class="sqbracket"> [确定]</span></div><div class="line"><span class="keyword">Starting</span> salt-master daemon:                              <span class="sqbracket"> [确定]</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment"># /etc/salt/salt-master restart</span></div><div class="line"><span class="keyword">Stopping</span> salt-master daemon:                              <span class="sqbracket"> [确定]</span></div><div class="line"><span class="keyword">Starting</span> salt-master daemon:                              <span class="sqbracket"> [确定]</span></div></pre></figure>
 
 <h3 id="三、minion配置">三、minion配置</h3>
 <p>虽然minion的配置项很多，但也别被吓到了，其实minion的配置还是蛮简单的。默认minion会尝试去连接salt这个域名，当然如果它能解析出IP的话，那么你完全不用更改了</p>
 <p>当然你也可以指定其他域名或者IP，只要minion能解析就成</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># vim /etc/salt/minion</span></div><div class="line">master: <span class="number">10.0</span><span class="number">.0</span><span class="number">.1</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># vim /etc/salt/minion</span></div><div class="line">master: <span class="number">10.0</span><span class="number">.0</span><span class="number">.1</span></div></pre></figure>
 
 <p>同理更新完配置文件后，重启下minion</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /etc/salt/salt-minion restart</span></div><div class="line"><span class="keyword">Stopping</span> salt-minion daemon:                              <span class="sqbracket"> [确定]</span></div><div class="line"><span class="keyword">Starting</span> salt-minion daemon:                              <span class="sqbracket"> [确定]</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="comment"># /etc/salt/salt-minion restart</span></div><div class="line"><span class="keyword">Stopping</span> salt-minion daemon:                              <span class="sqbracket"> [确定]</span></div><div class="line"><span class="keyword">Starting</span> salt-minion daemon:                              <span class="sqbracket"> [确定]</span></div></pre></figure>
 
 <h3 id="四、运行Salt">四、运行Salt</h3>
 <p>在前台运行master（要让进程以daemon模式运行，使用-d参数）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># salt-master</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># salt-master</span></div></pre></figure>
 
 <p>在前台运行minion（要让进程以daemon模式运行，使用-d参数）</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># salt-minion</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># salt-minion</span></div></pre></figure>
 
 <p><strong>备注</strong><br>如果在运行Salt的时候出现问题，可以使用debug模式运行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># salt-minion -l debug</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># salt-minion -l debug</span></div></pre></figure>
 
 <p>如果希望以非root用户运行，可以指定其他用户运行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># salt-minion -u clavin</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># salt-minion -u clavin</span></div></pre></figure>
 
 <h3 id="五、Key管理">五、Key管理</h3>
 <p>Salt通讯过程中使用AES加密，这个确保了命令不会被监听，并且master跟minion是建立了密钥认证的，保证了其安全</p>
 <p>minion的Key必须添加到master才能被master管理，Key管理可以使用salt-key命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># salt-key -L</div><div class="line">Unaccepted Key<span class="variable">s:</span></div><div class="line">SquidMonitor-SZ</div><div class="line">Accepted Key<span class="variable">s:</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"># salt-key -L</div><div class="line">Unaccepted Key<span class="variable">s:</span></div><div class="line">SquidMonitor-SZ</div><div class="line">Accepted Key<span class="variable">s:</span></div></pre></figure>
 
 <p>使用-A参数可以添加master检测到的所有minions，当然你只是想指定一台的话可以使用-a参数</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="preprocessor"># salt-key -A</span></div><div class="line"><span class="preprocessor"># salt-key -L</span></div><div class="line">Unaccepted Keys:</div><div class="line">Accepted Keys:</div><div class="line">SquidMonitor-SZ</div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"><span class="preprocessor"># salt-key -A</span></div><div class="line"><span class="preprocessor"># salt-key -L</span></div><div class="line">Unaccepted Keys:</div><div class="line">Accepted Keys:</div><div class="line">SquidMonitor-SZ</div></pre></figure>
 
 <h3 id="六、发送命令">六、发送命令</h3>
 <p>你可以使用test.ping命令检查master跟minion的联通性，匹配支持正则^^</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># salt <span class="string">'SquidMonitor-SZ'</span> test.ping</div><div class="line">SquidMonitor-SZ:</div><div class="line">    <span class="keyword">True</span></div><div class="line"># salt <span class="string">'*'</span> test.ping</div><div class="line">SquidMonitor-SZ:</div><div class="line">    <span class="keyword">True</span></div><div class="line">BJ-SQUIDAPP-<span class="number">50</span>:</div><div class="line">    <span class="keyword">True</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><pre><div class="line"># salt <span class="string">'SquidMonitor-SZ'</span> test.ping</div><div class="line">SquidMonitor-SZ:</div><div class="line">    <span class="keyword">True</span></div><div class="line"># salt <span class="string">'*'</span> test.ping</div><div class="line">SquidMonitor-SZ:</div><div class="line">    <span class="keyword">True</span></div><div class="line">BJ-SQUIDAPP-<span class="number">50</span>:</div><div class="line">    <span class="keyword">True</span></div></pre></figure>
 
 <p><strong>Saltstack的简单配置就介绍到这里，下次介绍下grains跟pillar</strong></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://yoursite.com/2013/09/06/saltstack-configure/" data-id="t7tvms2fe78gikbn" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-
-      
-    </footer>
-  </div>
-  
     
-<nav id="article-nav">
-  
-    <a href="/2013/09/06/saltstack-pillar/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Saltstack | pillar（四）
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2013/09/05/saltstack-install/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Saltstack | Saltstack安装（一）</div>
-    </a>
-  
-</nav>
-
-  
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
 </article>
 
-</section>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2014 Clavin Li<br>
-      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape+</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<!-- 百度分享 start -->
-
-<div id="article-share-box" class="article-share-box">
-  <div id="bdshare" class="bdsharebuttonbox article-share-links">
-    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
-    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
-    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
-    <a class="article-share-more" data-cmd="more" title="更多"></a>
-  </div>
 </div>
-<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"nocss.css"}};with(document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date()/36e5)];</script>
-
-<!-- 百度分享 end -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
   </div>
+  <div class="widget-wrapper">
+    <aside id="sidebar">
+  
+  
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+
+<div class="widget recent-posts first">
+  <h3 class="title">最近的文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
+      </li>
+    
+      <li>
+        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
+      </li>
+    
+  </ul>
+</div>
+
+    
+      
+      
+
+<div class="widget blogroll">
+  <h3 class="title">友情链接</h3>
+  <ul class="entry">
+  
+    
+    <li><a href="http://heroicyang.com/" target="_blank">Heroic Yang&#39;s Blog</a></li>
+  
+  </ul>
+</div>
+
+    
+  
+</aside>
+<div class="clearfix"></div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2014 <a href="/">Clavin Li</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
 </body>
 </html>
