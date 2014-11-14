@@ -40,6 +40,74 @@
   <header>
     
       <div class="icon"></div>
+      <time datetime="2013-12-23T06:46:00.000Z"><a href="/2013/12/23/linux-openssh-ssh2/">12月 23 2013</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2013/12/23/linux-openssh-ssh2/">SSH密钥登录 | OpenSSH &lt;--&gt; SSH2</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、SSH是什么？">一、SSH是什么？</h3>
+<p>Secure Shell（缩写为SSH），由IETF的网络工作小组（Network Working Group）所制定；SSH为一项创建在应用层和传输层基础上的安全协议，为计算机上的Shell（壳层）提供安全的传输和使用环境。<br>因为之前公司用的是SuSE（SSH2），现在用的是CentOS（OpenSSH），所以要通过密钥相互登录就有点麻烦了。<br>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2013/12/23/linux-openssh-ssh2/#more" class="more-link">Read More</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-12-05T07:35:15.000Z"><a href="/2013/12/05/linux-server-pptp/">12月 5 2013</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2013/12/05/linux-server-pptp/">PPTP | 部署PPTP VPN翻墙（AD认证）</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、PPTP是什么？">一、PPTP是什么？</h3>
+<p>点对点隧道协议（PPTP，Point to Point Tunneling Protocol）是一种主要用于VPN的数据链路层网络协议。因为之前的所在pptp服务器机房要裁撤了，所以要在新机房重新搭建服务，也借此记录下来<br>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2013/12/05/linux-server-pptp/#more" class="more-link">Read More</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+
+  <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <time datetime="2013-11-14T05:04:15.000Z"><a href="/2013/11/14/linux-command-grep/">11月 14 2013</a></time>
     
     
@@ -138,76 +206,6 @@
 
 
 
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2013-11-06T01:36:15.000Z"><a href="/2013/11/06/linux-command-seq/">11月 6 2013</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2013/11/06/linux-command-seq/">Command | seq</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、seq是什么？">一、seq是什么？</h3>
-<p>seq命令的作用就是打印出一串有序的数字，seq(sequence of number)<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2013/11/06/linux-command-seq/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
-  <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2013-10-22T02:56:15.000Z"><a href="/2013/10/22/saltstack-salt-ssh/">10月 22 2013</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2013/10/22/saltstack-salt-ssh/">Saltstack | salt-ssh（六）</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、salt-ssh介绍">一、salt-ssh介绍</h3>
-<p>salt-ssh是0.17.0新出现的一个功能，一听这名字就知道它是依赖ssh来进行远程命令执行的工具，好处就是你不需要在客户端安装minion，也不需要安装master（直接安装salt-ssh这个包即可），有点类似<br>paramiko、pssh、ansible这类的工具，有些时候你还真的需要salt-ssh（例如：条件不允许安装minion、不用长期管理某台minion）<br>最最重要的是salt-ssh并不只是单纯的ssh工具，它支持salt大部分的功能，如grains、modules、state等</p>
-<p><strong>备注</strong><br>需要注意的是，salt-ssh并没有继承原来的通讯架构(ZeroMQ)，也就是说它的执行速度啥的都会比较慢</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2013/10/22/saltstack-salt-ssh/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-
 
 <nav id="pagination">
   
@@ -229,19 +227,49 @@
     
       
       
-    
-      
-      
+
+<div class="widget tag first">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/kickstart/">kickstart</a><small>1</small></li>
+  
+    <li><a href="/tags/saltstack/">saltstack</a><small>4</small></li>
+  
+    <li><a href="/tags/server/">server</a><small>1</small></li>
+  
+  </ul>
+</div>
+
     
       
       
 
-<div class="widget recent-posts first">
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/kickstart/" style="font-size: 10.00px;">kickstart</a><a href="/tags/saltstack/" style="font-size: 20.00px;">saltstack</a><a href="/tags/server/" style="font-size: 10.00px;">server</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
   <h3 class="title">最近的文章</h3>
   <ul class="entry">
     
       <li>
-        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+        <a href="/2014/11/14/linux-command-hash-root-password-in-kickstart/">Command | kickstart之中rootpw密码生成方法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/11/14/linux-server-kickstart/">Kickstart | CentOS 6.6定制自动化安装盘</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">NFS | CentOS 6配置NFS服务</a>
       </li>
     
       <li>
@@ -252,14 +280,6 @@
         <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
       </li>
     
-      <li>
-        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
-      </li>
-    
-      <li>
-        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -267,7 +287,7 @@
       
       
 
-<div class="widget blogroll">
+<div class="widget blogroll first newline">
   <h3 class="title">友情链接</h3>
   <ul class="entry">
   

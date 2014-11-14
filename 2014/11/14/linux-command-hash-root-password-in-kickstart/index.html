@@ -4,13 +4,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
-  <title>归档 | ......</title>
+  <title>Command | kickstart之中rootpw密码生成方法 | ......</title>
   <meta name="author" content="Clavin Li">
+  
+  <meta name="description" content="一、简介
+linux kickstart文件里rootpw密码可以使用明文，也可以使用加密过的值，这里主要介绍下三种加密方法：md5、sha256、sha512
+使用明文的方法
+rootpw &quot;password&quot;
+
+使用加密的方法
+rootpw --iscrypted password_hashauthconfig --enableshadow --enablemd5 (--passalgo=sha256 or --passalgo=sha512)">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  
+  <meta property="og:title" content="Command | kickstart之中rootpw密码生成方法"/>
   <meta property="og:site_name" content="......"/>
 
   <link rel="alternate" href="/atom.xml" title="......" type="application/atom+xml">
@@ -35,12 +43,7 @@
   <div class="clearfix"></div>
 </nav>
 <div class="clearfix"></div></header>
-    <div class="content">
-<h2 class="archive-title">归档</h2>
-
-
-  
-    <article class="post">
+    <div class="content"><article class="post">
   <header>
     
       <div class="icon"></div>
@@ -48,7 +51,7 @@
     
     
   
-    <h1 class="title"><a href="/2014/11/14/linux-command-hash-root-password-in-kickstart/">Command | kickstart之中rootpw密码生成方法</a></h1>
+    <h1 class="title">Command | kickstart之中rootpw密码生成方法</h1>
   
 
   </header>
@@ -63,170 +66,44 @@
 <p>使用加密的方法</p>
 <figure class="highlight"><pre><div class="line"><span class="comment">rootpw</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">iscrypted</span> <span class="comment">password_hash</span></div><div class="line"><span class="comment">authconfig</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enableshadow</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enablemd5</span> <span class="comment">(</span><span class="literal">-</span><span class="literal">-</span><span class="comment">passalgo=sha256</span> <span class="comment">or</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">passalgo=sha512)</span></div></pre></figure>
 
+<a id="more"></a>
+
+<h3 id="二、加密生成方法，这里统一用password来加密">二、加密生成方法，这里统一用password来加密</h3>
+<h4 id="1、md5加密">1、md5加密</h4>
+<p>使用openssl passwd命令：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># openssl passwd -1 "password"</span></div><div class="line"><span class="variable">$1</span><span class="variable">$uMOl6YMI</span><span class="variable">$7AAO8YG7l37ipRXCmmame</span>.</div></pre></figure>
+
+<p>使用grub-crypt命令，会提示输出密码：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># grub-crypt --md5</span></div><div class="line">Password: </div><div class="line">Retype password: </div><div class="line"><span class="variable">$1</span><span class="variable">$Y9TR8PpY</span><span class="variable">$qm1VzsjKzbXtYInyAQLG70</span></div></pre></figure>
+
+<p>使用python，同样也会提示输出密码：</p>
+<figure class="highlight"><pre><div class="line"># echo <span class="string">'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$1$8_CHARACTER_SALT_HERE")'</span> | <span class="keyword">python</span> -</div><div class="line">Password: </div><div class="line"><span class="variable">$1</span><span class="variable">$8</span>_CHARAC<span class="variable">$GVWpvO3Hu009C37IYF41L0</span></div></pre></figure>
+
+<h4 id="2、sha256加密">2、sha256加密</h4>
+<p>使用grub-crypt命令，会提示输出密码：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># grub-crypt --sha-256</span></div><div class="line">Password: </div><div class="line">Retype password: </div><div class="line"><span class="variable">$5</span><span class="variable">$NSEqzlxQFNE998rG</span><span class="variable">$gDTEQsndo1pQ9</span>/<span class="number">2</span>.bj1knNNqQ0tQgzKH4bdzEjinHKC</div></pre></figure>
+
+<p>使用python，提示输入密码：</p>
+<figure class="highlight"><pre><div class="line"># echo <span class="string">'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$5$16_CHARACTER_SALT_HERE")'</span> | <span class="keyword">python</span> -</div><div class="line"><span class="variable">$5</span><span class="variable">$1</span>6_CHARACTER_SAL<span class="variable">$sc08xCjatZRZPSxgCvHe2</span>.RN7ocYGCrJZo6JzcOMtk5</div></pre></figure>
+
+<h4 id="3、sha512加密">3、sha512加密</h4>
+<p>使用grub-crypt命令，会提示输出密码：</p>
+<figure class="highlight"><pre><div class="line"><span class="comment"># grub-crypt --sha-512</span></div><div class="line">Password: </div><div class="line">Retype password:</div><div class="line"><span class="variable">$6</span><span class="variable">$twuCoL0kTI5ScTbr</span><span class="variable">$GyUJymp1wU0ouFQFiWXoOfl2i</span>.<span class="number">2</span>G5E5wh3tqdprny4avv9kJWc3MdLR/GB9YbfKB1Kx9no9wpO8YcX4d28Mrz.</div></pre></figure>
+
+<p>使用python，提示输入密码：</p>
+<figure class="highlight"><pre><div class="line"># echo <span class="string">'import crypt,getpass; print crypt.crypt(getpass.getpass(), "$6$16_CHARACTER_SALT_HERE")'</span> | <span class="keyword">python</span> -</div><div class="line"><span class="variable">$6</span><span class="variable">$1</span>6_CHARACTER_SAL<span class="variable">$ykxE75iUZiphsLz40</span>.oQAi7QIM4meq41EYYvQ66JkbODcvIrGIeRxF7dzpfvnk20ztzE3GY359DSSNQuPQdun.</div></pre></figure>
+
 
     
   </div>
-  <footer class="end-sep">
+  <footer>
     
-      
-        <div class="alignleft">
-          <a href="/2014/11/14/linux-command-hash-root-password-in-kickstart/#more" class="more-link">Read More</a>
-        </div>
       
       
     
     <div class="clearfix"></div>
   </footer>
 </article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-11-14T01:19:40.000Z"><a href="/2014/11/14/linux-server-kickstart/">11月 14 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/11/14/linux-server-kickstart/">Kickstart | CentOS 6.6定制自动化安装盘</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、简介">一、简介</h3>
-<p>最近在研究kickstart自动化安装，为了以后自己建IDC的时候装系统能够更加地快捷，当然后期肯定会用cobbler来做，毕竟更加强大便捷。<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/11/14/linux-server-kickstart/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-09-25T01:07:40.000Z"><a href="/2014/09/25/linux-server-nfs/">9月 25 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/09/25/linux-server-nfs/">NFS | CentOS 6配置NFS服务</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、配置NFS服务端">一、配置NFS服务端</h3>
-<figure class="highlight"><pre><div class="line"><span class="preprocessor"># yum install nfs-utils portmap （适用于CentOS 5）</span></div><div class="line"><span class="preprocessor"># yum install nfs-utils rpcbind （适用于CentOS 6）</span></div></pre></figure>
-
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/09/25/linux-server-nfs/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-09-20T18:48:40.000Z"><a href="/2014/09/21/linux-lvs-performance-optimize/">9月 21 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/09/21/linux-lvs-performance-optimize/">LVS |  LVS性能调优小记</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、简介">一、简介</h3>
-<p>来到新公司就遇到有业务上线，业务架构中涉及到LVS这块，安装部署什么的倒很快，直接yum install即可，调优的话之前也没咋弄过，所以把整个步骤给记录下来。<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/09/21/linux-lvs-performance-optimize/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2014-05-15T02:06:00.000Z"><a href="/2014/05/15/python-multiprocessing/">5月 15 2014</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、简介">一、简介</h3>
-<p>Python标准库中有很多实用的工具类，但是在具体使用时，标准库文档上对使用细节描述的并不清楚，比如urllib2这个HTTP客户端库。这里总结了一些urllib2的使用细节。<br>
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2014/05/15/python-multiprocessing/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-
-  <nav id="pagination">
-  
-  
-    <a href="/archives/page/2/" class="next">下一页</a>
-  
-  <div class="clearfix"></div>
-</nav>
 
 </div>
   </div>

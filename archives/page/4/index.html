@@ -44,6 +44,76 @@
   <header>
     
       <div class="icon"></div>
+      <time datetime="2013-11-06T01:36:15.000Z"><a href="/2013/11/06/linux-command-seq/">11月 6 2013</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2013/11/06/linux-command-seq/">Command | seq</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、seq是什么？">一、seq是什么？</h3>
+<p>seq命令的作用就是打印出一串有序的数字，seq(sequence of number)<br>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2013/11/06/linux-command-seq/#more" class="more-link">Read More</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <time datetime="2013-10-22T02:56:15.000Z"><a href="/2013/10/22/saltstack-salt-ssh/">10月 22 2013</a></time>
+    
+    
+  
+    <h1 class="title"><a href="/2013/10/22/saltstack-salt-ssh/">Saltstack | salt-ssh（六）</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h3 id="一、salt-ssh介绍">一、salt-ssh介绍</h3>
+<p>salt-ssh是0.17.0新出现的一个功能，一听这名字就知道它是依赖ssh来进行远程命令执行的工具，好处就是你不需要在客户端安装minion，也不需要安装master（直接安装salt-ssh这个包即可），有点类似<br>paramiko、pssh、ansible这类的工具，有些时候你还真的需要salt-ssh（例如：条件不允许安装minion、不用长期管理某台minion）<br>最最重要的是salt-ssh并不只是单纯的ssh工具，它支持salt大部分的功能，如grains、modules、state等</p>
+<p><strong>备注</strong><br>需要注意的是，salt-ssh并没有继承原来的通讯架构(ZeroMQ)，也就是说它的执行速度啥的都会比较慢</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+        <div class="alignleft">
+          <a href="/2013/10/22/saltstack-salt-ssh/#more" class="more-link">Read More</a>
+        </div>
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <time datetime="2013-10-21T09:33:00.000Z"><a href="/2013/10/21/saltstack-modules/">10月 21 2013</a></time>
     
     
@@ -146,76 +216,6 @@
 
 
   
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2013-09-06T14:17:00.000Z"><a href="/2013/09/06/python-bs4/">9月 6 2013</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2013/09/06/python-bs4/">Python | Beautiful Soup模块</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、简介">一、简介</h3>
-<p>Beautiful Soup是一个用来解析HTML和XML的python库，很适合用于爬取网页，提供了很人性化的parse tree，比起传统的SGMLParser给力多了</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2013/09/06/python-bs4/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <time datetime="2013-09-06T12:13:15.000Z"><a href="/2013/09/06/saltstack-pillar/">9月 6 2013</a></time>
-    
-    
-  
-    <h1 class="title"><a href="/2013/09/06/saltstack-pillar/">Saltstack | pillar（四）</a></h1>
-  
-
-  </header>
-  
-  <div class="entry">
-    
-      <h3 id="一、pillar介绍">一、pillar介绍</h3>
-<p>pillar的功能其实跟grains蛮像的，都可以调用它们来针对性的操作minion，跟state的管理方式很相似，看官方文章说pillar更适合针对不同的minion存储敏感信息（如密码），实在没看出差别在哪。。。</p>
-
-    
-  </div>
-  <footer class="end-sep">
-    
-      
-        <div class="alignleft">
-          <a href="/2013/09/06/saltstack-pillar/#more" class="more-link">Read More</a>
-        </div>
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
-</article>
-
-
-  
 
   <nav id="pagination">
   
@@ -239,19 +239,49 @@
     
       
       
-    
-      
-      
+
+<div class="widget tag first">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/kickstart/">kickstart</a><small>1</small></li>
+  
+    <li><a href="/tags/saltstack/">saltstack</a><small>4</small></li>
+  
+    <li><a href="/tags/server/">server</a><small>1</small></li>
+  
+  </ul>
+</div>
+
     
       
       
 
-<div class="widget recent-posts first">
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/kickstart/" style="font-size: 10.00px;">kickstart</a><a href="/tags/saltstack/" style="font-size: 20.00px;">saltstack</a><a href="/tags/server/" style="font-size: 10.00px;">server</a>
+  </div>
+</div>
+
+    
+      
+      
+
+<div class="widget recent-posts">
   <h3 class="title">最近的文章</h3>
   <ul class="entry">
     
       <li>
-        <a href="/2014/09/25/linux-server-nfs/">Server | CentOs 6配置NFS服务</a>
+        <a href="/2014/11/14/linux-command-hash-root-password-in-kickstart/">Command | kickstart之中rootpw密码生成方法</a>
+      </li>
+    
+      <li>
+        <a href="/2014/11/14/linux-server-kickstart/">Kickstart | CentOS 6.6定制自动化安装盘</a>
+      </li>
+    
+      <li>
+        <a href="/2014/09/25/linux-server-nfs/">NFS | CentOS 6配置NFS服务</a>
       </li>
     
       <li>
@@ -262,14 +292,6 @@
         <a href="/2014/05/15/python-multiprocessing/">Python | 多进程</a>
       </li>
     
-      <li>
-        <a href="/2014/05/15/python-pypi/">Python | pypi安装提示error invalid command &#39;egg_info&#39;</a>
-      </li>
-    
-      <li>
-        <a href="/2014/05/08/python-urllib2/">Python | urllib2模块【转】</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -277,7 +299,7 @@
       
       
 
-<div class="widget blogroll">
+<div class="widget blogroll first newline">
   <h3 class="title">友情链接</h3>
   <ul class="entry">
   
